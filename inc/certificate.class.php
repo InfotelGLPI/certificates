@@ -38,7 +38,7 @@ class PluginCertificatesCertificate extends CommonDBTM {
    protected $usenotepadrights         = true;
    
    static $types = array('Computer','Monitor','NetworkEquipment','Peripheral',
-         'Phone','Printer','Software');
+         'Phone','Printer','Software', 'User');
          
    static function getTypeName($nb=0) {
 
