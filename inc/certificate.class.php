@@ -701,7 +701,7 @@ class PluginCertificatesCertificate extends CommonDBTM {
             $certificate_infos[$type][$entity][] = $data;
 
             if (!isset($certificates_infos[$type][$entity])) {
-               $certificate_messages[$type][$entity] = __('Certificates expired since more', 'certificates')."<br />";
+               $certificate_messages[$type][$entity] = __('Expired or expiring certificates', 'certificates')."<br />";
             }
             $certificate_messages[$type][$entity] .= $message;
          }
