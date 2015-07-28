@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - certificates plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-14 16:09+0100\n"
-"PO-Revision-Date: 2013-11-20 10:28+0000\n"
-"Last-Translator: Doru  DEACONU <dumitrudeaconu@yahoo.com>\n"
+"POT-Creation-Date: 2015-07-28 09:40+0200\n"
+"PO-Revision-Date: 2015-07-28 07:42+0000\n"
+"Last-Translator: Xavier CAILLAUD <tsmr@thetsmr.fr>\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/GLPI_certificates/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,77 +19,78 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: hook.php:332 inc/certificate_item.class.php:508
+#: hook.php:373 inc/certificate_item.class.php:507
 msgid "Does not expire"
 msgstr "Nu expiră"
 
-#: hook.php:400
+#: hook.php:442
 msgid "Associate to certificate"
 msgstr "Asociază la certificat"
 
-#: setup.php:107 inc/certificate.class.php:43
+#: setup.php:81 inc/certificate.class.php:45 inc/menu.class.php:35
+#: inc/profile.class.php:145
 msgid "Certificate"
 msgid_plural "Certificates"
 msgstr[0] "Certificat"
 msgstr[1] "Certificate"
 msgstr[2] "Certificate"
 
-#: setup.php:119
-msgid "This plugin requires GLPI >= 0.84"
-msgstr "Acest plugin necesită GLPI >= 0.84"
+#: setup.php:93
+msgid "This plugin requires GLPI >= 0.90"
+msgstr ""
 
-#: inc/certificate.class.php:80 inc/certificate.class.php:295
-#: inc/certificate_item.class.php:454
+#: inc/certificate.class.php:75 inc/certificate.class.php:290
+#: inc/certificate_item.class.php:453
 msgid "DNS name"
 msgstr "Nume DNS asociat"
 
-#: inc/certificate.class.php:84 inc/certificate.class.php:309
-#: inc/certificate_item.class.php:455
+#: inc/certificate.class.php:79 inc/certificate.class.php:304
+#: inc/certificate_item.class.php:454
 msgid "DNS suffix"
 msgstr "Sufix DNS asociat"
 
-#: inc/certificate.class.php:100 inc/certificate.class.php:286
+#: inc/certificate.class.php:95 inc/certificate.class.php:281
 msgid "Root CA"
 msgstr "Root CA"
 
-#: inc/certificate.class.php:105 inc/certificate.class.php:339
+#: inc/certificate.class.php:100 inc/certificate.class.php:337
 msgid "Self-signed"
 msgstr "Autosemnată"
 
-#: inc/certificate.class.php:110 inc/certificate.class.php:330
+#: inc/certificate.class.php:105 inc/certificate.class.php:328
 msgid "Notification email"
 msgstr "Notificare email"
 
-#: inc/certificate.class.php:137 inc/certificate.class.php:353
+#: inc/certificate.class.php:132 inc/certificate.class.php:351
 msgid "Command used"
 msgstr "Comandă utilizată"
 
-#: inc/certificate.class.php:142 inc/certificate.class.php:359
+#: inc/certificate.class.php:137 inc/certificate.class.php:357
 msgid "Certificate request (CSR)"
 msgstr "Cerere Certificat (CSR)"
 
-#: inc/certificate.class.php:572
+#: inc/certificate.class.php:311
+msgid "Empty for infinite"
+msgstr ""
+
+#: inc/certificate.class.php:623 inc/certificate.class.php:704
 #: inc/notificationtargetcertificate.class.php:74
 msgid "Expired or expiring certificates"
 msgstr "Certificate expirate sau certificate ce vor expira"
 
-#: inc/certificate.class.php:653 inc/config.class.php:73
-msgid "Certificates expired since more"
-msgstr "Certificate expirate de mai mult de "
-
-#: inc/certificate_item.class.php:427
+#: inc/certificate_item.class.php:426
 msgctxt "button"
 msgid "Associate a certificate"
 msgstr "Asociază certificat"
 
-#: inc/certificatestate.class.php:38
+#: inc/certificatestate.class.php:40
 msgid "Certificate status"
 msgid_plural "Certificate statuses"
 msgstr[0] "Statut certificat"
 msgstr[1] "Statusuri certificate"
 msgstr[2] "Statusuri certificate"
 
-#: inc/certificatetype.class.php:39
+#: inc/certificatetype.class.php:41
 msgid "Certificate type"
 msgid_plural "Certificate types"
 msgstr[0] "Tip certificat"
@@ -104,15 +105,19 @@ msgstr "Configurare plugin"
 msgid "Time of checking of validity of certificates"
 msgstr "Timp de verificare a valabilităţii certificatelor"
 
+#: inc/config.class.php:73
+msgid "Certificates expired since more"
+msgstr "Certificate expirate de mai mult de "
+
 #: inc/config.class.php:77
 msgid "Certificates expiring in less than"
 msgstr "Certificate ce expiră în mai puţin de"
 
-#: inc/notificationstate.class.php:91
+#: inc/notificationstate.class.php:104
 msgid "add not-used status in expiration mail"
 msgstr "Adaugă un statut neutilizat <br> în trimiterea  emailuri de expirare"
 
-#: inc/notificationstate.class.php:117
+#: inc/notificationstate.class.php:131
 msgid "No used status in expiration mail"
 msgstr "Statut neutilizat <br> în trimiterea  emailuri de expirare"
 
@@ -125,7 +130,3 @@ msgstr "Certificate expirate"
 #: inc/notificationtargetcertificate.class.php:49
 msgid "Expiring certificates"
 msgstr "Cerificate ce vor expira"
-
-#: inc/profile.class.php:37 inc/profile.class.php:144
-msgid "Rights management"
-msgstr "Managementul drepturilor"
