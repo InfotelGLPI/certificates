@@ -240,10 +240,11 @@ function plugin_certificates_uninstall() {
                "glpi_logs",
                "glpi_items_tickets",
                "glpi_contracts_items",
-               "glpi_notepads");
+               "glpi_notepads",
+             "glpi_dropdowntranslations");
 
    foreach($tables_glpi as $table_glpi)
-      $DB->query("DELETE FROM `$table_glpi` WHERE `itemtype` = 'PluginCertificatesCertificate';");
+      $DB->query("DELETE FROM `$table_glpi` WHERE `itemtype` LIKE 'PluginCertificates';");
       
    //Delete rights associated with the plugin
    $profileRight = new ProfileRight();
