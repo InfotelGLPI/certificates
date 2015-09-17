@@ -1,6 +1,12 @@
 # certificates
 Plugin certificates pour GLPI 0.90
 
+Ce plugin est sur Transifex - Aidez-nous à le traduire :
+https://www.transifex.com/tsmr/GLPI_certificates/
+
+This plugin is on Transifex - Help us to translate :
+https://www.transifex.com/tsmr/GLPI_certificates/
+
 Ce plugin vous permet de gérer les certificats de votre réseau et de les associer à des éléments de l'inventaire
 > * Un système d'alertes mail permet de vérifier les certificats qui vont ou qui ont expirés.
 > * Utilisable depuis le helpdesk
