@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Certificates plugin 1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-28 09:40+0200\n"
+"POT-Creation-Date: 2015-09-17 10:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: hook.php:373 inc/certificate_item.class.php:507
+#: hook.php:374 inc/certificate_item.class.php:507
 msgid "Does not expire"
 msgstr ""
 
-#: hook.php:442
+#: hook.php:443
 msgid "Associate to certificate"
 msgstr ""
 
@@ -81,13 +81,13 @@ msgctxt "button"
 msgid "Associate a certificate"
 msgstr ""
 
-#: inc/certificatestate.class.php:40
+#: inc/certificatestate.class.php:41
 msgid "Certificate status"
 msgid_plural "Certificate statuses"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/certificatetype.class.php:41
+#: inc/certificatetype.class.php:42
 msgid "Certificate type"
 msgid_plural "Certificate types"
 msgstr[0] ""

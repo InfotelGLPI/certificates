@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - certificates plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-28 09:40+0200\n"
+"POT-Creation-Date: 2015-09-17 10:19+0200\n"
 "PO-Revision-Date: 2015-07-28 07:42+0000\n"
 "Last-Translator: Xavier CAILLAUD <tsmr@thetsmr.fr>\n"
-"Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/GLPI_certificates/language/en_GB/)\n"
+"Language-Team: English (United Kingdom) (http://www.transifex.com/tsmr/GLPI_certificates/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: hook.php:373 inc/certificate_item.class.php:507
+#: hook.php:374 inc/certificate_item.class.php:507
 msgid "Does not expire"
 msgstr "Does not expire"
 
-#: hook.php:442
+#: hook.php:443
 msgid "Associate to certificate"
 msgstr "Associate to certificate"
 
@@ -80,13 +80,13 @@ msgctxt "button"
 msgid "Associate a certificate"
 msgstr "Associate a certificate"
 
-#: inc/certificatestate.class.php:40
+#: inc/certificatestate.class.php:41
 msgid "Certificate status"
 msgid_plural "Certificate statuses"
 msgstr[0] "Certificate status"
 msgstr[1] "Certificate statuses"
 
-#: inc/certificatetype.class.php:41
+#: inc/certificatetype.class.php:42
 msgid "Certificate type"
 msgid_plural "Certificate types"
 msgstr[0] "Certificate type"
