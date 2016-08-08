@@ -89,7 +89,14 @@ function plugin_version_certificates() {
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_certificates_check_prerequisites() {
-   if (version_compare(GLPI_VERSION,'0.90','lt') || version_compare(GLPI_VERSION,'0.91','ge')) {
+ if (
+  ( version_compare(GLPI_VERSION,'1','lt') && (
+   version_compare(GLPI_VERSION,'0.90','lt') || version_compare(GLPI_VERSION,'0.91','ge')
+  )) ||
+  ( version_compare(GLPI_VERSION,'9','gt') && (
+   version_compare(GLPI_VERSION,'9.1','gt')
+  ))
+) {
       _e('This plugin requires GLPI >= 0.90', 'certificates');
       return false;
    }
