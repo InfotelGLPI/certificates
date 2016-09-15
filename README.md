@@ -1,5 +1,5 @@
 # certificates
-Plugin certificates pour GLPI 0.90
+Plugin certificates pour GLPI
 
 Ce plugin est sur Transifex - Aidez-nous à le traduire :
 https://www.transifex.com/tsmr/GLPI_certificates/
