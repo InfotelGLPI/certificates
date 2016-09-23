@@ -2,28 +2,28 @@
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
- Certificates plugin for GLPI
- Copyright (C) 2003-2011 by the certificates Development Team.
+ certificates plugin for GLPI
+ Copyright (C) 2009-2016 by the certificates Development Team.
 
- https://forge.indepnet.net/projects/certificates
+ https://github.com/InfotelGLPI/certificates
  -------------------------------------------------------------------------
 
  LICENSE
       
  This file is part of certificates.
 
- Certificates is free software; you can redistribute it and/or modify
+ certificates is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- Certificates is distributed in the hope that it will be useful,
+ certificates is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with Certificates. If not, see <http://www.gnu.org/licenses/>.
+ along with certificates. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
 
@@ -39,7 +39,7 @@ function plugin_certificates_install() {
    if (!TableExists("glpi_plugin_certificates") && !TableExists("glpi_plugin_certificates_certificatetypes")) {
       
       $install=true;
-      $DB->runFile(GLPI_ROOT ."/plugins/certificates/sql/empty-2.0.0.sql");
+      $DB->runFile(GLPI_ROOT ."/plugins/certificates/sql/empty-2.2.0.sql");
 
    } else if (TableExists("glpi_plugin_certificates_mailing") && !FieldExists("glpi_plugin_certificates","recursive")) {
       
@@ -124,14 +124,14 @@ function plugin_certificates_install() {
       $query = "INSERT INTO `glpi_notifications`
                                    VALUES (NULL, 'Alert Expired Certificates', 0, 'PluginCertificatesCertificate', 'ExpiredCertificates',
                                           'mail',".$itemtype.",
-                                          '', 1, 1, '2010-02-17 22:36:46');";
+                                          '', 1, 1, '2010-02-17 22:36:46', '2010-02-17 22:36:46');";
       
       $result=$DB->query($query);
       
       $query = "INSERT INTO `glpi_notifications`
                                    VALUES (NULL, 'Alert Certificates Which Expire', 0, 'PluginCertificatesCertificate', 'CertificatesWhichExpire',
                                           'mail',".$itemtype.",
-                                          '', 1, 1, '2010-02-17 22:36:46');";
+                                          '', 1, 1, '2010-02-17 22:36:46', '2010-02-17 22:36:46');";
       
       $result=$DB->query($query);
    }

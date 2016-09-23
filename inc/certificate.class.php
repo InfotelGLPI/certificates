@@ -35,7 +35,8 @@ class PluginCertificatesCertificate extends CommonDBTM {
    
    public $dohistory                   = true;
    static $rightname                   = "plugin_certificates";
-   protected $usenotepad               = true;
+   protected $usenotepadrights = true;
+   protected $usenotepad = true;
    
    static $types = array('Computer','Monitor','NetworkEquipment','Peripheral',
          'Phone','Printer','Software', 'User');
@@ -171,14 +172,11 @@ class PluginCertificatesCertificate extends CommonDBTM {
       $tab[30]['name']           = __('ID');
       $tab[30]['datatype']       = 'number';
 
+
       $tab[80]['table']          = 'glpi_entities';
       $tab[80]['field']          = 'completename';
       $tab[80]['name']           = __('Entity');
       $tab[80]['datatype']       = 'dropdown';
-      
-      $tab[81]['table']       = 'glpi_entities';
-      $tab[81]['field']       = 'entities_id';
-      $tab[81]['name']        = __('Entity')."-".__('ID');
       
       return $tab;
    }
@@ -543,10 +541,10 @@ class PluginCertificatesCertificate extends CommonDBTM {
                   if ($certif_item->add($input)) {
                      $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_OK);
                   } else {
-                     $ma->itemDone($item->getType(), $ids, MassiveAction::ACTION_KO);
+                     $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_KO);
                   }
                } else {
-                  $ma->itemDone($item->getType(), $ids, MassiveAction::ACTION_KO);
+                  $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_KO);
                }
             }
 
