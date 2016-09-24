@@ -365,7 +365,6 @@ class PluginCertificatesCertificate extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       
       echo "<td class='center' colspan='2'>";
-      printf(__('Last update on %s'), Html::convDateTime($this->fields["date_mod"]));
       echo "</td>";
       
       echo "<td>";
