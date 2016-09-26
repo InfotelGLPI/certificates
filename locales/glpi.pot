@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Certificates plugin 1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-17 10:19+0200\n"
+"POT-Creation-Date: 2016-09-26 09:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Associate to certificate"
 msgstr ""
 
-#: setup.php:81 inc/certificate.class.php:45 inc/menu.class.php:35
+#: setup.php:81 inc/certificate.class.php:46 inc/menu.class.php:34
 #: inc/profile.class.php:145
 msgid "Certificate"
 msgid_plural "Certificates"
@@ -34,40 +34,40 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: setup.php:93
-msgid "This plugin requires GLPI >= 0.90"
+msgid "This plugin requires GLPI >= 9.1"
 msgstr ""
 
-#: inc/certificate.class.php:75 inc/certificate.class.php:290
+#: inc/certificate.class.php:76 inc/certificate.class.php:291
 #: inc/certificate_item.class.php:453
 msgid "DNS name"
 msgstr ""
 
-#: inc/certificate.class.php:79 inc/certificate.class.php:304
+#: inc/certificate.class.php:80 inc/certificate.class.php:305
 #: inc/certificate_item.class.php:454
 msgid "DNS suffix"
 msgstr ""
 
-#: inc/certificate.class.php:95 inc/certificate.class.php:281
+#: inc/certificate.class.php:96 inc/certificate.class.php:282
 msgid "Root CA"
 msgstr ""
 
-#: inc/certificate.class.php:100 inc/certificate.class.php:337
+#: inc/certificate.class.php:101 inc/certificate.class.php:338
 msgid "Self-signed"
 msgstr ""
 
-#: inc/certificate.class.php:105 inc/certificate.class.php:328
+#: inc/certificate.class.php:106 inc/certificate.class.php:329
 msgid "Notification email"
 msgstr ""
 
-#: inc/certificate.class.php:132 inc/certificate.class.php:351
+#: inc/certificate.class.php:133 inc/certificate.class.php:352
 msgid "Command used"
 msgstr ""
 
-#: inc/certificate.class.php:137 inc/certificate.class.php:357
+#: inc/certificate.class.php:138 inc/certificate.class.php:358
 msgid "Certificate request (CSR)"
 msgstr ""
 
-#: inc/certificate.class.php:311
+#: inc/certificate.class.php:312
 msgid "Empty for infinite"
 msgstr ""
 
