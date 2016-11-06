@@ -26,34 +26,46 @@
  along with certificates. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
- 
-class PluginCertificatesMenu extends CommonGLPI {
+
+/**
+ * Class PluginCertificatesMenu
+ */
+class PluginCertificatesMenu extends CommonGLPI
+{
    static $rightname = 'plugin_certificates';
 
-   static function getMenuName() {
+   /**
+    * @return translated
+    */
+   static function getMenuName()
+   {
       return _n('Certificate', 'Certificates', 2, 'certificates');
    }
 
-   static function getMenuContent() {
-      global $CFG_GLPI;
+   /**
+    * @return array
+    */
+   static function getMenuContent()
+   {
 
-      $menu                                           = array();
-      $menu['title']                                  = self::getMenuName();
-      $menu['page']                                   = "/plugins/certificates/front/certificate.php";
-      $menu['links']['search']                        = PluginCertificatesCertificate::getSearchURL(false);
+      $menu = array();
+      $menu['title'] = self::getMenuName();
+      $menu['page'] = "/plugins/certificates/front/certificate.php";
+      $menu['links']['search'] = PluginCertificatesCertificate::getSearchURL(false);
       if (PluginCertificatesCertificate::canCreate()) {
-         $menu['links']['add']                        = PluginCertificatesCertificate::getFormURL(false);
+         $menu['links']['add'] = PluginCertificatesCertificate::getFormURL(false);
       }
 
       return $menu;
    }
 
-   static function removeRightsFromSession() {
+   static function removeRightsFromSession()
+   {
       if (isset($_SESSION['glpimenu']['assets']['types']['PluginCertificatesMenu'])) {
-         unset($_SESSION['glpimenu']['assets']['types']['PluginCertificatesMenu']); 
+         unset($_SESSION['glpimenu']['assets']['types']['PluginCertificatesMenu']);
       }
       if (isset($_SESSION['glpimenu']['assets']['content']['plugincertificatesmenu'])) {
-         unset($_SESSION['glpimenu']['assets']['content']['plugincertificatesmenu']); 
+         unset($_SESSION['glpimenu']['assets']['content']['plugincertificatesmenu']);
       }
    }
 }

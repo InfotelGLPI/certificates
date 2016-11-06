@@ -28,45 +28,47 @@
  */
 
 // Init the hooks of the plugins -Needed
-function plugin_init_certificates() {
+function plugin_init_certificates()
+{
    global $PLUGIN_HOOKS;
-   
+
    $PLUGIN_HOOKS['csrf_compliant']['certificates'] = true;
-   $PLUGIN_HOOKS['change_profile']['certificates'] = array('PluginCertificatesProfile','initProfile');
+   $PLUGIN_HOOKS['change_profile']['certificates'] = array('PluginCertificatesProfile', 'initProfile');
    $PLUGIN_HOOKS['assign_to_ticket']['certificates'] = true;
-   
+
 
    if (Session::getLoginUserID()) {
-   
+
       // Params : plugin name - string type - number - attributes
       Plugin::registerClass('PluginCertificatesCertificate', array(
          'linkgroup_tech_types' => true,
          'linkuser_tech_types' => true,
          'document_types' => true,
          'helpdesk_visible_types' => true,
-         'ticket_types'         => true,
+         'ticket_types' => true,
          'contract_types' => true,
          'notificationtemplates_types' => true
       ));
-      
+
       Plugin::registerClass('PluginCertificatesConfig',
-                         array('addtabon' => 'CronTask'));
-                         
+         array('addtabon' => 'CronTask'));
+
       Plugin::registerClass('PluginCertificatesProfile',
-                         array('addtabon' => 'Profile'));
+         array('addtabon' => 'Profile'));
 
       if (class_exists('PluginAccountsAccount')) {
          PluginAccountsAccount::registerType('PluginCertificatesCertificate');
       }
-   
-      $plugin = new Plugin();
-      if (!$plugin->isActivated('environment') 
-         && Session::haveRight("plugin_certificates", READ)) {
 
-         $PLUGIN_HOOKS['menu_toadd']['certificates'] = array('assets'   => 'PluginCertificatesMenu');
+      $plugin = new Plugin();
+      if (!$plugin->isActivated('environment')
+         && Session::haveRight("plugin_certificates", READ)
+      ) {
+
+         $PLUGIN_HOOKS['menu_toadd']['certificates'] = array('assets' => 'PluginCertificatesMenu');
       }
       if (Session::haveRight("plugin_certificates", UPDATE)) {
-         $PLUGIN_HOOKS['use_massive_action']['certificates']=1;
+         $PLUGIN_HOOKS['use_massive_action']['certificates'] = 1;
       }
 
       // End init, when all types are registered
@@ -75,21 +77,29 @@ function plugin_init_certificates() {
 }
 
 // Get the name and the version of the plugin - Needed
-function plugin_version_certificates() {
+/**
+ * @return array
+ */
+function plugin_version_certificates()
+{
 
-   return array (
+   return array(
       'name' => _n('Certificate', 'Certificates', 2, 'certificates'),
       'version' => '2.2.0',
       'license' => 'GPLv2+',
-      'author'  => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
-      'homepage'=>'https://github.com/InfotelGLPI/certificates',
+      'author' => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
+      'homepage' => 'https://github.com/InfotelGLPI/certificates',
       'minGlpiVersion' => '9.1',
    );
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
-function plugin_certificates_check_prerequisites() {
-   if (version_compare(GLPI_VERSION,'9.1','lt') || version_compare(GLPI_VERSION,'9.2','ge')) {
+/**
+ * @return bool
+ */
+function plugin_certificates_check_prerequisites()
+{
+   if (version_compare(GLPI_VERSION, '9.1', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
       _e('This plugin requires GLPI >= 9.1', 'certificates');
       return false;
    }
@@ -97,8 +107,10 @@ function plugin_certificates_check_prerequisites() {
 }
 
 // Uninstall process for plugin : need to return true if succeeded : may display messages or add to message after redirect
-function plugin_certificates_check_config() {
+/**
+ * @return bool
+ */
+function plugin_certificates_check_config()
+{
    return true;
 }
-
-?>

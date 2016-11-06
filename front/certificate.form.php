@@ -27,85 +27,83 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 if (!isset($_GET["id"])) $_GET["id"] = "";
 if (!isset($_GET["withtemplate"])) $_GET["withtemplate"] = "";
 
-$certif=new PluginCertificatesCertificate();
-$certif_item=new PluginCertificatesCertificate_Item();
+$certif = new PluginCertificatesCertificate();
+$certif_item = new PluginCertificatesCertificate_Item();
 
 if (isset($_POST["add"])) {
-   $certif->check(-1,CREATE,$_POST);
-   $newID= $certif->add($_POST);
+   $certif->check(-1, CREATE, $_POST);
+   $newID = $certif->add($_POST);
    if ($_SESSION['glpibackcreated']) {
-      Html::redirect($certif->getFormURL()."?id=".$newID);
+      Html::redirect($certif->getFormURL() . "?id=" . $newID);
    }
    Html::back();
-   
+
 } else if (isset($_POST["delete"])) {
 
-   $certif->check($_POST['id'],DELETE);
+   $certif->check($_POST['id'], DELETE);
    $certif->delete($_POST);
    $certif->redirectToList();
-   
+
 } else if (isset($_POST["restore"])) {
 
-   $certif->check($_POST['id'],PURGE);
+   $certif->check($_POST['id'], PURGE);
    $certif->restore($_POST);
    $certif->redirectToList();
-   
+
 } else if (isset($_POST["purge"])) {
 
-   $certif->check($_POST['id'],PURGE);
-   $certif->delete($_POST,1);
+   $certif->check($_POST['id'], PURGE);
+   $certif->delete($_POST, 1);
    $certif->redirectToList();
-   
+
 } else if (isset($_POST["update"])) {
 
-   $certif->check($_POST['id'],UPDATE);
+   $certif->check($_POST['id'], UPDATE);
    $certif->update($_POST);
    Html::back();
-   
+
 } else if (isset($_POST["additem"])) {
 
-   if (!empty($_POST['itemtype'])&&$_POST['items_id']>0) {
-      $certif_item->check(-1,UPDATE,$_POST);
+   if (!empty($_POST['itemtype']) && $_POST['items_id'] > 0) {
+      $certif_item->check(-1, UPDATE, $_POST);
       $certif_item->addItem($_POST);
    }
    Html::back();
-   
+
 } else if (isset($_POST["deleteitem"])) {
 
    foreach ($_POST["item"] as $key => $val) {
       $input = array('id' => $key);
-      if ($val==1) {
+      if ($val == 1) {
          $certif_item->check($key, UPDATE);
          $certif_item->delete($input);
       }
    }
    Html::back();
-   
+
 } else if (isset($_POST["deletecertificates"])) {
 
    $input = array('id' => $_POST["id"]);
    $certif_item->check($_POST["id"], UPDATE);
    $certif_item->delete($input);
    Html::back();
-   
+
 } else {
 
    $certif->checkGlobal(READ);
 
    $plugin = new Plugin();
    if ($plugin->isActivated("environment")) {
-      Html::header(PluginCertificatesCertificate::getTypeName(2),'',"assets","pluginenvironmentdisplay","certificates");
+      Html::header(PluginCertificatesCertificate::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "certificates");
    } else {
-      Html::header(PluginCertificatesCertificate::getTypeName(2), '', "assets","plugincertificatesmenu");
+      Html::header(PluginCertificatesCertificate::getTypeName(2), '', "assets", "plugincertificatesmenu");
    }
    $certif->display($_GET);
 
    Html::footer();
 }
-
-?>

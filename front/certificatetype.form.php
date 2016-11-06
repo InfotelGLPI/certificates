@@ -26,10 +26,8 @@
  along with certificates. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
- 
-include ('../../../inc/includes.php');
+
+include('../../../inc/includes.php');
 
 $dropdown = new PluginCertificatesCertificateType();
-include (GLPI_ROOT . "/front/dropdown.common.form.php");
-
-?>
+include(GLPI_ROOT . "/front/dropdown.common.form.php");

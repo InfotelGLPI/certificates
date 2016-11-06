@@ -27,31 +27,44 @@
  --------------------------------------------------------------------------
  */
 
-if (!defined('GLPI_ROOT')){
+if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
 // Class NotificationTarget
-class PluginCertificatesNotificationTargetCertificate extends NotificationTarget {
+/**
+ * Class PluginCertificatesNotificationTargetCertificate
+ */
+class PluginCertificatesNotificationTargetCertificate extends NotificationTarget
+{
 
-   function getEvents() {
-      return array ('ExpiredCertificates' => __('Expired certificates', 'certificates'),
-                     'CertificatesWhichExpire' => __('Expiring certificates', 'certificates'));
+   /**
+    * @return array
+    */
+   function getEvents()
+   {
+      return array('ExpiredCertificates' => __('Expired certificates', 'certificates'),
+         'CertificatesWhichExpire' => __('Expiring certificates', 'certificates'));
    }
 
-   function getDatasForTemplate($event,$options=array()) {
+   /**
+    * @param $event
+    * @param array $options
+    */
+   function getDatasForTemplate($event, $options = array())
+   {
 
       $this->datas['##certificate.entity##'] =
-                        Dropdown::getDropdownName('glpi_entities',
-                                                  $options['entities_id']);
+         Dropdown::getDropdownName('glpi_entities',
+            $options['entities_id']);
       $this->datas['##lang.certificate.entity##'] = __('Entity');
-      $this->datas['##certificate.action##'] = ($event=="ExpiredCertificates"?__('Expired certificates', 'certificates'):
-                                                         __('Expiring certificates', 'certificates'));
-      
+      $this->datas['##certificate.action##'] = ($event == "ExpiredCertificates" ? __('Expired certificates', 'certificates') :
+         __('Expiring certificates', 'certificates'));
+
       $this->datas['##lang.certificate.name##'] = __('Name');
       $this->datas['##lang.certificate.dateexpiration##'] = __('Expiration date');
 
-      foreach($options['certificates'] as $id => $certificate) {
+      foreach ($options['certificates'] as $id => $certificate) {
          $tmp = array();
 
          $tmp['##certificate.name##'] = $certificate['name'];
@@ -60,24 +73,26 @@ class PluginCertificatesNotificationTargetCertificate extends NotificationTarget
          $this->datas['certificates'][] = $tmp;
       }
    }
-   
-   function getTags() {
 
-      $tags = array('certificate.name'             => __('Name'),
-                     'certificate.dateexpiration'  => __('Expiration date'));
+   /**
+    *
+    */
+   function getTags()
+   {
+
+      $tags = array('certificate.name' => __('Name'),
+         'certificate.dateexpiration' => __('Expiration date'));
       foreach ($tags as $tag => $label) {
-         $this->addTagToList(array('tag'=>$tag,'label'=>$label,
-                                   'value'=>true));
+         $this->addTagToList(array('tag' => $tag, 'label' => $label,
+            'value' => true));
       }
-      
-      $this->addTagToList(array('tag'=>'certificates',
-                                'label'=>__('Expired or expiring certificates', 'certificates'),
-                                'value'=>false,
-                                'foreach'=>true,
-                                'events'=>array('CertificatesWhichExpire','ExpiredCertificates')));
+
+      $this->addTagToList(array('tag' => 'certificates',
+         'label' => __('Expired or expiring certificates', 'certificates'),
+         'value' => false,
+         'foreach' => true,
+         'events' => array('CertificatesWhichExpire', 'ExpiredCertificates')));
 
       asort($this->tag_descriptions);
    }
 }
-
-?>

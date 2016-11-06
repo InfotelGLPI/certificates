@@ -27,9 +27,9 @@
  --------------------------------------------------------------------------
  */
 
-if (strpos($_SERVER['PHP_SELF'],"dropdownTypeCertificates.php")) {
-   $AJAX_INCLUDE=1;
-   include ('../../../inc/includes.php');
+if (strpos($_SERVER['PHP_SELF'], "dropdownTypeCertificates.php")) {
+   $AJAX_INCLUDE = 1;
+   include('../../../inc/includes.php');
    header("Content-Type: text/html; charset=UTF-8");
    Html::header_nocache();
 }
@@ -45,8 +45,8 @@ if (isset($_POST["certificatetype"])) {
    if (isset($_POST['used']) && is_array($_POST['used']) && (count($_POST['used']) > 0)) {
       $query = "SELECT `id`
                 FROM `glpi_plugin_certificates_certificates`
-                WHERE `id` IN (".implode(',',$_POST['used']).")
-                      AND `plugin_certificates_certificatetypes_id` = '".$_POST["certificatetype"]."'";
+                WHERE `id` IN (" . implode(',', $_POST['used']) . ")
+                      AND `plugin_certificates_certificatetypes_id` = '" . $_POST["certificatetype"] . "'";
 
       foreach ($DB->request($query) AS $data) {
          $used[$data['id']] = $data['id'];
@@ -54,12 +54,11 @@ if (isset($_POST["certificatetype"])) {
    }
 
    Dropdown::show('PluginCertificatesCertificate',
-                  array('name'      => $_POST['myname'],
-                        'used'      => $used,
-                        'width'     => '50%',
-                        'entity'    => $_POST['entity'],
-                        'rand'      => $_POST['rand'],
-                        'condition' => "glpi_plugin_certificates_certificates.plugin_certificates_certificatetypes_id='".$_POST["certificatetype"]."'"));
+      array('name' => $_POST['myname'],
+         'used' => $used,
+         'width' => '50%',
+         'entity' => $_POST['entity'],
+         'rand' => $_POST['rand'],
+         'condition' => "glpi_plugin_certificates_certificates.plugin_certificates_certificatetypes_id='" . $_POST["certificatetype"] . "'"));
 
 }
-?>

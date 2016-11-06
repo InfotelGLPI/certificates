@@ -27,13 +27,13 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 $plugin = new Plugin();
 if ($plugin->isActivated("environment"))
-   Html::header(PluginCertificatesCertificate::getTypeName(2),'',"assets","pluginenvironmentdisplay","certificates");
+   Html::header(PluginCertificatesCertificate::getTypeName(2), '', "assets", "pluginenvironmentdisplay", "certificates");
 else
-   Html::header(PluginCertificatesCertificate::getTypeName(2), '', "assets","plugincertificatesmenu");
+   Html::header(PluginCertificatesCertificate::getTypeName(2), '', "assets", "plugincertificatesmenu");
 
 $certif = new PluginCertificatesCertificate();
 $certif->checkGlobal(READ);
@@ -47,5 +47,3 @@ if ($certif->canView()) {
 }
 
 Html::footer();
-
-?>

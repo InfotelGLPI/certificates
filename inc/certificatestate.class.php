@@ -31,36 +31,51 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
-class PluginCertificatesCertificateState extends CommonDropdown {
-   
-   static $rightname = "plugin_certificates";
-   var $can_be_translated  = true;
-   
-   static function getTypeName($nb=0) {
+/**
+ * Class PluginCertificatesCertificateState
+ */
+class PluginCertificatesCertificateState extends CommonDropdown
+{
+
+   static $rightname = "dropdown";
+   var $can_be_translated = true;
+
+   /**
+    * @param int $nb
+    * @return string|translated
+    */
+   static function getTypeName($nb = 0)
+   {
 
       return _n('Certificate status', 'Certificate statuses', $nb, 'certificates');
    }
-   
-   static function transfer($ID, $entity) {
+
+   /**
+    * @param $ID
+    * @param $entity
+    * @return ID|int|the
+    */
+   static function transfer($ID, $entity)
+   {
       global $DB;
 
-      if ($ID>0) {
+      if ($ID > 0) {
          // Not already transfer
          // Search init item
          $query = "SELECT *
                    FROM `glpi_plugin_certificates_certificatestates`
                    WHERE `id` = '$ID'";
 
-         if ($result=$DB->query($query)) {
+         if ($result = $DB->query($query)) {
             if ($DB->numrows($result)) {
                $data = $DB->fetch_assoc($result);
                $data = Toolbox::addslashes_deep($data);
                $input['name'] = $data['name'];
-               $input['entities_id']  = $entity;
+               $input['entities_id'] = $entity;
                $temp = new self();
-               $newID    = $temp->getID($input);
+               $newID = $temp->getID();
 
-               if ($newID<0) {
+               if ($newID < 0) {
                   $newID = $temp->import($input);
                }
 
@@ -71,5 +86,3 @@ class PluginCertificatesCertificateState extends CommonDropdown {
       return 0;
    }
 }
-
-?>

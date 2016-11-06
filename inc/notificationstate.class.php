@@ -31,12 +31,21 @@ if (!defined('GLPI_ROOT')) {
    die("Sorry. You can't access directly to this file");
 }
 
-class PluginCertificatesNotificationState extends CommonDBTM {
-   
-   function getFromDBbyState($plugin_certificates_certificatestates_id) {
+/**
+ * Class PluginCertificatesNotificationState
+ */
+class PluginCertificatesNotificationState extends CommonDBTM
+{
+
+   /**
+    * @param $plugin_certificates_certificatestates_id
+    * @return bool
+    */
+   function getFromDBbyState($plugin_certificates_certificatestates_id)
+   {
       global $DB;
-      
-      $query = "SELECT * FROM `".$this->getTable()."` " .
+
+      $query = "SELECT * FROM `" . $this->getTable() . "` " .
          "WHERE `plugin_certificates_certificatestates_id` = '" . $plugin_certificates_certificatestates_id . "' ";
       if ($result = $DB->query($query)) {
          if ($DB->numrows($result) != 1) {
@@ -51,75 +60,91 @@ class PluginCertificatesNotificationState extends CommonDBTM {
       }
       return false;
    }
-   
-   function findStates() {
+
+   /**
+    * @return string
+    */
+   function findStates()
+   {
       global $DB;
 
-      $queryBranch='';
+      $queryBranch = '';
       // Recherche les enfants
 
-      $queryChilds= "SELECT `plugin_certificates_certificatestates_id`
-      FROM `".$this->getTable()."`";
+      $queryChilds = "SELECT `plugin_certificates_certificatestates_id`
+      FROM `" . $this->getTable() . "`";
       if ($resultChilds = $DB->query($queryChilds)) {
          while ($dataChilds = $DB->fetch_array($resultChilds)) {
-            $child=$dataChilds["plugin_certificates_certificatestates_id"];
+            $child = $dataChilds["plugin_certificates_certificatestates_id"];
             $queryBranch .= ",$child";
          }
       }
 
       return $queryBranch;
-  }
+   }
 
-   function addNotificationState($plugin_certificates_certificatestates_id) {
+   /**
+    * @param $plugin_certificates_certificatestates_id
+    */
+   function addNotificationState($plugin_certificates_certificatestates_id)
+   {
 
       if ($this->getFromDBbyState($plugin_certificates_certificatestates_id)) {
 
          $this->update(array(
-         'id'=>$this->fields['id'],
-         'plugin_certificates_certificatestates_id'=>$plugin_certificates_certificatestates_id));
+            'id' => $this->fields['id'],
+            'plugin_certificates_certificatestates_id' => $plugin_certificates_certificatestates_id));
       } else {
 
          $this->add(array(
-         'plugin_certificates_certificatestates_id'=>$plugin_certificates_certificatestates_id));
+            'plugin_certificates_certificatestates_id' => $plugin_certificates_certificatestates_id));
       }
    }
-  
-   function showAddForm($target) {
+
+   /**
+    * @param $target
+    */
+   function showAddForm($target)
+   {
       global $DB;
-      
+
       $used = array();
       $query = "SELECT *
-      FROM `".$this->getTable()."`
+      FROM `" . $this->getTable() . "`
       ORDER BY `plugin_certificates_certificatestates_id` ASC ";
       if ($result = $DB->query($query)) {
          $number = $DB->numrows($result);
          if ($number != 0) {
-             while($ligne= $DB->fetch_array($result)) {
-               $used[]=$ligne["plugin_certificates_certificatestates_id"];
+            while ($ligne = $DB->fetch_array($result)) {
+               $used[] = $ligne["plugin_certificates_certificatestates_id"];
             }
          }
       }
       echo "<div align='center'><form method='post'  action=\"$target\">";
       echo "<table class='tab_cadre_fixe' cellpadding='5'><tr ><th colspan='2'>";
-      echo __('add not-used status in expiration mail', 'certificates')."</th></tr>";
+      echo __('add not-used status in expiration mail', 'certificates') . "</th></tr>";
       echo "<tr class='tab_bg_1'><td>";
       Dropdown::show('PluginCertificatesCertificateState', array('name' => "plugin_certificates_certificatestates_id",
-      'used' => $used));
+         'used' => $used));
       echo "</td>";
       echo "<td>";
-      echo "<div align='center'><input type='submit' name='add' value=\""._sx('button', 'Post')."\" class='submit' ></div></td></tr>";
+      echo "<div align='center'><input type='submit' name='add' value=\"" . _sx('button', 'Post') . "\" class='submit' ></div></td></tr>";
       echo "</table>";
       Html::closeForm();
       echo "</div>";
-  }
-  
-   function showForm($target) {
+   }
+
+   /**
+    * @param $target
+    */
+   function showForm($target)
+   {
       global $DB;
 
-      $rand=mt_rand();
+      $rand = mt_rand();
 
       $query = "SELECT *
-      FROM `".$this->getTable()."`
+      FROM `" . $this->getTable() . "`
       ORDER BY `plugin_certificates_certificatestates_id` ASC ";
       if ($result = $DB->query($query)) {
          $number = $DB->numrows($result);
@@ -128,18 +153,18 @@ class PluginCertificatesNotificationState extends CommonDBTM {
             echo "<div align='center'><form method='post' name='massiveaction_form$rand' id='massiveaction_form$rand'  action=\"$target\">";
             echo "<table class='tab_cadre_fixe' cellpadding='5'>";
             echo "<tr>";
-            echo "<th></th><th>".__('No used status in expiration mail', 'certificates')."</th>";
+            echo "<th></th><th>" . __('No used status in expiration mail', 'certificates') . "</th>";
             echo "</tr>";
-            while($ligne= $DB->fetch_array($result)) {
-               $ID=$ligne["id"];
+            while ($ligne = $DB->fetch_array($result)) {
+               $ID = $ligne["id"];
                echo "<tr class='tab_bg_1'>";
                echo "<td class='center' width='10'>";
                echo "<input type='hidden' name='id' value='$ID'>";
                echo "<input type='checkbox' name='item[$ID]' value='1'>";
                echo "</td>";
-               echo "<td>".Dropdown::getDropdownName("glpi_plugin_certificates_certificatestates"
-               ,$ligne["plugin_certificates_certificatestates_id"]);
-               echo"</td>";
+               echo "<td>" . Dropdown::getDropdownName("glpi_plugin_certificates_certificatestates"
+                     , $ligne["plugin_certificates_certificatestates_id"]);
+               echo "</td>";
                echo "</tr>";
             }
 
@@ -152,5 +177,3 @@ class PluginCertificatesNotificationState extends CommonDBTM {
       }
    }
 }
-
-?>

@@ -27,23 +27,23 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 Session::checkRight("config", UPDATE);
 
-$config=new PluginCertificatesConfig();
-$notif=new PluginCertificatesNotificationState();
+$config = new PluginCertificatesConfig();
+$notif = new PluginCertificatesNotificationState();
 
 if (isset($_POST["add"])) {
-  
+
    $notif->addNotificationState($_POST['plugin_certificates_certificatestates_id']);
    Html::back();
 
 } else if (isset($_POST["delete"])) {
 
    foreach ($_POST["item"] as $key => $val) {
-      if ($val==1) {
-         $notif->delete(array('id'=>$key));
+      if ($val == 1) {
+         $notif->delete(array('id' => $key));
       }
    }
    Html::back();
@@ -54,5 +54,3 @@ if (isset($_POST["add"])) {
    Html::back();
 
 }
-
-?>
