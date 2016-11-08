@@ -778,7 +778,7 @@ class PluginCertificatesCertificate extends CommonDBTM
                Html::convDate($data["date_expiration"]) . "<br>\n";
             $certificate_infos[$type][$entity][] = $data;
 
-            if (!isset($certificates_infos[$type][$entity])) {
+            if (!isset($$certificate_messages[$type][$entity])) {
                $certificate_messages[$type][$entity] = __('Expired or expiring certificates', 'certificates') . "<br />";
             }
             $certificate_messages[$type][$entity] .= $message;
