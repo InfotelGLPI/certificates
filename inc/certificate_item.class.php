@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of certificates.
 
  certificates is free software; you can redistribute it and/or modify
@@ -207,8 +207,6 @@ class PluginCertificatesCertificate_Item extends CommonDBRelation
    public static function showForCertificate(PluginCertificatesCertificate $certificate)
    {
       global $DB;
-
-//      $certif=new PluginCertificatesCertificate();
 
       $instID = $certificate->fields['id'];
       if (!$certificate->can($instID, READ)) {
@@ -466,7 +464,6 @@ class PluginCertificatesCertificate_Item extends CommonDBRelation
 
          echo "<div class='firstbloc'>";
 
-
          if (Session::haveRight("plugin_certificates", READ)
             && ($nb > count($used))
          ) {
@@ -531,7 +528,6 @@ class PluginCertificatesCertificate_Item extends CommonDBRelation
             sprintf(__('%1$s = %2$s'),
                $item->getTypeName(1), $item->getName()));
 
-
          foreach ($certificates as $data) {
             $certificateID = $data["id"];
             $link = NOT_AVAILABLE;
@@ -581,7 +577,6 @@ class PluginCertificatesCertificate_Item extends CommonDBRelation
             $i++;
          }
       }
-
 
       echo "</table>";
       if ($canedit && $number && ($withtemplate < 2)) {

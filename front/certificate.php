@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of certificates.
 
  certificates is free software; you can redistribute it and/or modify
