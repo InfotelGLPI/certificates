@@ -100,7 +100,7 @@ function plugin_version_certificates()
 function plugin_certificates_check_prerequisites()
 {
    if (version_compare(GLPI_VERSION, '9.1', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
-      _e('This plugin requires GLPI >= 9.1', 'certificates');
+      echo __('This plugin requires GLPI >= 9.1', 'certificates');
       return false;
    }
    return true;

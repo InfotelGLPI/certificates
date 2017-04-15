@@ -92,11 +92,11 @@ class PluginCertificatesConfig extends CommonDBTM
       $date_next = date("Y-m-d", $delay_stamp_next);
 
       echo "<tr class='tab_bg_1'><td><div align='left'>";
-      _e('Certificates expired since more', 'certificates');
+      echo __('Certificates expired since more', 'certificates');
       echo "&nbsp;<input type='text' size='5' name='delay_expired' value=\"$delay_expired\">";
       echo "&nbsp;" . _n('Day', 'Days', 2);
       echo "&nbsp;( >" . Html::convDate($date_first) . ")<br>";
-      _e('Certificates expiring in less than', 'certificates');
+      echo __('Certificates expiring in less than', 'certificates');
       echo "&nbsp;<input type='text' size='5' name='delay_whichexpire' value=\"$delay_whichexpire\">";
       echo "&nbsp;" . _n('Day', 'Days', 2);
       echo "&nbsp;( <" . Html::convDate($date_next) . ")";
