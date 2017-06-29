@@ -712,7 +712,7 @@ class PluginCertificatesCertificate extends CommonDBTM
       $query = "SELECT * 
          FROM `glpi_plugin_certificates_certificates`
          WHERE `date_expiration` IS NOT NULL
-         AND `is_deleted` = '0'
+         AND `is_deleted` = '0' AND `mailing`
          AND DATEDIFF(CURDATE(),`date_expiration`) > $delay 
          AND DATEDIFF(CURDATE(),`date_expiration`) > 0 ";
       $query .= "AND `plugin_certificates_certificatestates_id` NOT IN (999999";
@@ -737,7 +737,7 @@ class PluginCertificatesCertificate extends CommonDBTM
       $query = "SELECT *
          FROM `glpi_plugin_certificates_certificates`
          WHERE `date_expiration` IS NOT NULL
-         AND `is_deleted` = '0'
+         AND `is_deleted` = '0' AND `mailing`
          AND DATEDIFF(CURDATE(),`date_expiration`) > -$delay 
          AND DATEDIFF(CURDATE(),`date_expiration`) < 0 ";
       $query .= "AND `plugin_certificates_certificatestates_id` NOT IN (999999";
