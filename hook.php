@@ -30,13 +30,12 @@
 /**
  * @return bool
  */
-function plugin_certificates_install()
-{
+function plugin_certificates_install() {
    global $DB;
 
    include_once(GLPI_ROOT . "/plugins/certificates/inc/profile.class.php");
 
-   $install = false;
+   $install  = false;
    $update78 = false;
 
    if (!TableExists("glpi_plugin_certificates") && !TableExists("glpi_plugin_certificates_certificatetypes")) {
@@ -73,7 +72,7 @@ function plugin_certificates_install()
    }
    //from 1.6 version
    if (TableExists("glpi_plugin_certificates_certificates")
-      && !FieldExists("glpi_plugin_certificates_certificates", "users_id_tech")
+       && !FieldExists("glpi_plugin_certificates_certificates", "users_id_tech")
    ) {
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.8.0.sql");
    }
@@ -105,12 +104,14 @@ function plugin_certificates_install()
    if ($install || $update78) {
 
       //Do One time on 0.78
-      $query_id = "SELECT `id` FROM `glpi_notificationtemplates` WHERE `itemtype`='PluginCertificatesCertificate' AND `name` = 'Alert Certificates'";
+      $query_id = "SELECT `id` FROM `glpi_notificationtemplates` 
+                  WHERE `itemtype`='PluginCertificatesCertificate' AND `name` = 'Alert Certificates'";
       $result = $DB->query($query_id) or die ($DB->error());
       $itemtype = $DB->result($result, 0, 'id');
 
-      $query = "INSERT INTO `glpi_notificationtemplatetranslations`
-                                 VALUES(NULL, " . $itemtype . ", '','##certificate.action## : ##certificate.entity##',
+      $query = "INSERT INTO `glpi_notificationtemplatetranslations` (`notificationtemplates_id`, `language`, `subject`,
+                                                                      `content_text`, `content_html`)
+                                 VALUES(" . $itemtype . ", '','##certificate.action## : ##certificate.entity##',
                         '##lang.certificate.entity## :##certificate.entity##
    ##FOREACHcertificates##
    ##lang.certificate.name## : ##certificate.name## - ##lang.certificate.dateexpiration## : ##certificate.dateexpiration##
@@ -121,23 +122,23 @@ function plugin_certificates_install()
                         ##ENDFOREACHcertificates##&lt;/p&gt;');";
       $DB->query($query);
 
-      $query = "INSERT INTO `glpi_notifications`
-                                   VALUES (NULL, 'Alert Expired Certificates', 0, 'PluginCertificatesCertificate', 'ExpiredCertificates',
-                                          'mail'," . $itemtype . ",
-                                          '', 1, 1, '2010-02-17 22:36:46', '2010-02-17 22:36:46');";
+      $query = "INSERT INTO `glpi_notifications` (`name`, `entities_id`, `itemtype`, `event`, `mode`, 
+                                                  `notificationtemplates_id`, `is_recursive`, `is_active`, `date_creation`)
+                VALUES ('Alert Expired Certificates', 0, 'PluginCertificatesCertificate', 'ExpiredCertificates',
+                                          'mail'," . $itemtype . ", 1, 1, NOW());";
 
       $DB->query($query);
 
-      $query = "INSERT INTO `glpi_notifications`
-                                   VALUES (NULL, 'Alert Certificates Which Expire', 0, 'PluginCertificatesCertificate', 'CertificatesWhichExpire',
-                                          'mail'," . $itemtype . ",
-                                          '', 1, 1, '2010-02-17 22:36:46', '2010-02-17 22:36:46');";
+      $query = "INSERT INTO `glpi_notifications` (`name`, `entities_id`, `itemtype`, `event`, `mode`, 
+                                                  `notificationtemplates_id`, `is_recursive`, `is_active`, `date_creation`)
+                VALUES ('Alert Certificates Which Expire', 0, 'PluginCertificatesCertificate', 'CertificatesWhichExpire',
+                                          'mail'," . $itemtype . ", 1, 1, NOW());";
 
       $DB->query($query);
    }
 
    if ($update78) {
-      $query_ = "SELECT *
+      $query_  = "SELECT *
             FROM `glpi_plugin_certificates_profiles` ";
       $result_ = $DB->query($query_);
       if ($DB->numrows($result_) > 0) {
@@ -157,12 +158,18 @@ function plugin_certificates_install()
 
       Plugin::migrateItemType(
          array(1700 => 'PluginCertificatesCertificate'),
-         array("glpi_bookmarks", "glpi_bookmarks_users", "glpi_displaypreferences",
-            "glpi_documents_items", "glpi_infocoms", "glpi_logs", "glpi_items_tickets"),
+         array("glpi_bookmarks",
+               "glpi_bookmarks_users",
+               "glpi_displaypreferences",
+               "glpi_documents_items",
+               "glpi_infocoms",
+               "glpi_logs",
+               "glpi_items_tickets"),
          array("glpi_plugin_certificates_certificates_items"));
 
       Plugin::migrateItemType(
-         array(1200 => "PluginAppliancesAppliance", 1300 => "PluginWebapplicationsWebapplication"),
+         array(1200 => "PluginAppliancesAppliance",
+               1300 => "PluginWebapplicationsWebapplication"),
          array("glpi_plugin_certificates_certificates_items"));
    }
 
@@ -179,58 +186,50 @@ function plugin_certificates_install()
 /**
  * @return bool
  */
-function plugin_certificates_uninstall()
-{
+function plugin_certificates_uninstall() {
    global $DB;
 
    include_once(GLPI_ROOT . "/plugins/certificates/inc/profile.class.php");
    include_once(GLPI_ROOT . "/plugins/certificates/inc/menu.class.php");
 
    $tables = array("glpi_plugin_certificates_certificates",
-      "glpi_plugin_certificates_certificates_items",
-      "glpi_plugin_certificates_certificatetypes",
-      "glpi_plugin_certificates_certificatestates",
-      "glpi_plugin_certificates_configs",
-      "glpi_plugin_certificates_notificationstates");
+                   "glpi_plugin_certificates_certificates_items",
+                   "glpi_plugin_certificates_certificatetypes",
+                   "glpi_plugin_certificates_certificatestates",
+                   "glpi_plugin_certificates_configs",
+                   "glpi_plugin_certificates_notificationstates");
 
    foreach ($tables as $table)
       $DB->query("DROP TABLE IF EXISTS `$table`;");
 
    //old versions	
    $tables = array("glpi_plugin_certificates",
-      "glpi_plugin_certificates_profiles",
-      "glpi_plugin_certificates_device",
-      "glpi_dropdown_plugin_certificates_type",
-      "glpi_dropdown_plugin_certificates_status",
-      "glpi_plugin_certificates_config",
-      "glpi_plugin_certificates_mailing",
-      "glpi_plugin_certificates_default");
+                   "glpi_plugin_certificates_profiles",
+                   "glpi_plugin_certificates_device",
+                   "glpi_dropdown_plugin_certificates_type",
+                   "glpi_dropdown_plugin_certificates_status",
+                   "glpi_plugin_certificates_config",
+                   "glpi_plugin_certificates_mailing",
+                   "glpi_plugin_certificates_default");
 
    foreach ($tables as $table)
       $DB->query("DROP TABLE IF EXISTS `$table`;");
 
-   $notif = new Notification();
+   $notif   = new Notification();
    $options = array('itemtype' => 'PluginCertificatesCertificate',
-      'event' => 'ExpiredCertificates',
-      'FIELDS' => 'id');
-   foreach ($DB->request('glpi_notifications', $options) as $data) {
-      $notif->delete($data);
-   }
-   $options = array('itemtype' => 'PluginCertificatesCertificate',
-      'event' => 'CertificatesWhichExpire',
-      'FIELDS' => 'id');
+                    'FIELDS'   => 'id');
    foreach ($DB->request('glpi_notifications', $options) as $data) {
       $notif->delete($data);
    }
 
    //templates
-   $template = new NotificationTemplate();
+   $template    = new NotificationTemplate();
    $translation = new NotificationTemplateTranslation();
-   $options = array('itemtype' => 'PluginCertificatesCertificate',
-      'FIELDS' => 'id');
+   $options     = array('itemtype' => 'PluginCertificatesCertificate',
+                        'FIELDS'   => 'id');
    foreach ($DB->request('glpi_notificationtemplates', $options) as $data) {
       $options_template = array('notificationtemplates_id' => $data['id'],
-         'FIELDS' => 'id');
+                                'FIELDS'                   => 'id');
 
       foreach ($DB->request('glpi_notificationtemplatetranslations', $options_template) as $data_template) {
          $translation->delete($data_template);
@@ -239,13 +238,13 @@ function plugin_certificates_uninstall()
    }
 
    $tables_glpi = array("glpi_displaypreferences",
-      "glpi_documents_items",
-      "glpi_bookmarks",
-      "glpi_logs",
-      "glpi_items_tickets",
-      "glpi_contracts_items",
-      "glpi_notepads",
-      "glpi_dropdowntranslations");
+                        "glpi_documents_items",
+                        "glpi_bookmarks",
+                        "glpi_logs",
+                        "glpi_items_tickets",
+                        "glpi_contracts_items",
+                        "glpi_notepads",
+                        "glpi_dropdowntranslations");
 
    foreach ($tables_glpi as $table_glpi)
       $DB->query("DELETE FROM `$table_glpi` WHERE `itemtype` LIKE 'PluginCertificates%';");
@@ -262,8 +261,7 @@ function plugin_certificates_uninstall()
    return true;
 }
 
-function plugin_certificates_postinit()
-{
+function plugin_certificates_postinit() {
    global $PLUGIN_HOOKS;
 
    $PLUGIN_HOOKS['item_purge']['certificates'] = array();
@@ -279,10 +277,10 @@ function plugin_certificates_postinit()
 
 /**
  * @param $types
+ *
  * @return mixed
  */
-function plugin_certificates_AssignToTicket($types)
-{
+function plugin_certificates_AssignToTicket($types) {
 
    if (Session::haveRight("plugin_certificates_open_ticket", "1")) {
       $types['PluginCertificatesCertificate'] = PluginCertificatesCertificate::getTypeName(2);
@@ -294,23 +292,22 @@ function plugin_certificates_AssignToTicket($types)
 /**
  * @return array
  */
-function plugin_certificates_getDatabaseRelations()
-{
+function plugin_certificates_getDatabaseRelations() {
 
    $plugin = new Plugin();
    if ($plugin->isActivated("certificates"))
 
-      return array("glpi_plugin_certificates_certificatetypes" => array("glpi_plugin_certificates_certificates" => "plugin_certificates_certificatetypes_id"),
-         "glpi_plugin_certificates_certificatestates" => array("glpi_plugin_certificates_certificates" => "plugin_certificates_certificatestates_id",
-            "glpi_plugin_certificates_mailingstates" => "plugin_certificates_certificatestates_id"),
-         "glpi_entities" => array("glpi_plugin_certificates_certificates" => "entities_id",
-            "glpi_plugin_certificates_certificatetypes" => "entities_id",
-            "glpi_plugin_certificates_certificatestates" => "entities_id"),
-         "glpi_users" => array("glpi_plugin_certificates_certificates" => "users_id_tech"),
-         "glpi_groups" => array("glpi_plugin_certificates_certificates" => "groups_id_tech"),
-         "glpi_locations" => array("glpi_plugin_certificates_certificates" => "locations_id"),
-         "glpi_manufacturers" => array("glpi_plugin_certificates_certificates" => "manufacturers_id"),
-         "glpi_plugin_certificates_certificates" => array("glpi_plugin_certificates_certificates_items" => "plugin_certificates_certificates_id"));
+      return array("glpi_plugin_certificates_certificatetypes"  => array("glpi_plugin_certificates_certificates" => "plugin_certificates_certificatetypes_id"),
+                   "glpi_plugin_certificates_certificatestates" => array("glpi_plugin_certificates_certificates"  => "plugin_certificates_certificatestates_id",
+                                                                         "glpi_plugin_certificates_mailingstates" => "plugin_certificates_certificatestates_id"),
+                   "glpi_entities"                              => array("glpi_plugin_certificates_certificates"      => "entities_id",
+                                                                         "glpi_plugin_certificates_certificatetypes"  => "entities_id",
+                                                                         "glpi_plugin_certificates_certificatestates" => "entities_id"),
+                   "glpi_users"                                 => array("glpi_plugin_certificates_certificates" => "users_id_tech"),
+                   "glpi_groups"                                => array("glpi_plugin_certificates_certificates" => "groups_id_tech"),
+                   "glpi_locations"                             => array("glpi_plugin_certificates_certificates" => "locations_id"),
+                   "glpi_manufacturers"                         => array("glpi_plugin_certificates_certificates" => "manufacturers_id"),
+                   "glpi_plugin_certificates_certificates"      => array("glpi_plugin_certificates_certificates_items" => "plugin_certificates_certificates_id"));
    else
       return array();
 }
@@ -319,13 +316,12 @@ function plugin_certificates_getDatabaseRelations()
 /**
  * @return array
  */
-function plugin_certificates_getDropdown()
-{
+function plugin_certificates_getDropdown() {
 
    $plugin = new Plugin();
    if ($plugin->isActivated("certificates"))
-      return array('PluginCertificatesCertificateType' => PluginCertificatesCertificateType::getTypeName(2),
-         'PluginCertificatesCertificateState' => PluginCertificatesCertificateState::getTypeName(2));
+      return array('PluginCertificatesCertificateType'  => PluginCertificatesCertificateType::getTypeName(2),
+                   'PluginCertificatesCertificateState' => PluginCertificatesCertificateState::getTypeName(2));
    else
       return array();
 }
@@ -335,34 +331,34 @@ function plugin_certificates_getDropdown()
 
 /**
  * @param $itemtype
+ *
  * @return array
  */
-function plugin_certificates_getAddSearchOptions($itemtype)
-{
+function plugin_certificates_getAddSearchOptions($itemtype) {
 
    $sopt = array();
 
    if (in_array($itemtype, PluginCertificatesCertificate::getTypes(true))) {
       if (Session::haveRight("plugin_certificates", READ)) {
-         $sopt[1710]['table'] = 'glpi_plugin_certificates_certificates';
-         $sopt[1710]['field'] = 'name';
-         $sopt[1710]['name'] = PluginCertificatesCertificate::getTypeName(2) . " - " . __('Name');
-         $sopt[1710]['forcegroupby'] = '1';
-         $sopt[1710]['datatype'] = 'itemlink';
+         $sopt[1710]['table']         = 'glpi_plugin_certificates_certificates';
+         $sopt[1710]['field']         = 'name';
+         $sopt[1710]['name']          = PluginCertificatesCertificate::getTypeName(2) . " - " . __('Name');
+         $sopt[1710]['forcegroupby']  = '1';
+         $sopt[1710]['datatype']      = 'itemlink';
          $sopt[1710]['massiveaction'] = false;
          $sopt[1710]['itemlink_type'] = 'PluginCertificatesCertificate';
-         $sopt[1710]['joinparams'] = array('beforejoin'
-         => array('table' => 'glpi_plugin_certificates_certificates_items',
-               'joinparams' => array('jointype' => 'itemtype_item')));
+         $sopt[1710]['joinparams']    = array('beforejoin'
+                                              => array('table'      => 'glpi_plugin_certificates_certificates_items',
+                                                       'joinparams' => array('jointype' => 'itemtype_item')));
 
-         $sopt[1711]['table'] = 'glpi_plugin_certificates_certificatetypes';
-         $sopt[1711]['field'] = 'name';
-         $sopt[1711]['name'] = PluginCertificatesCertificate::getTypeName(2) . " - " . __('Type');
-         $sopt[1711]['forcegroupby'] = true;
-         $sopt[1711]['joinparams'] = array('beforejoin' => array(
-            array('table' => 'glpi_plugin_certificates_certificates',
-               'joinparams' => $sopt[1710]['joinparams'])));
-         $sopt[1711]['datatype'] = 'dropdown';
+         $sopt[1711]['table']         = 'glpi_plugin_certificates_certificatetypes';
+         $sopt[1711]['field']         = 'name';
+         $sopt[1711]['name']          = PluginCertificatesCertificate::getTypeName(2) . " - " . __('Type');
+         $sopt[1711]['forcegroupby']  = true;
+         $sopt[1711]['joinparams']    = array('beforejoin' => array(
+            array('table'      => 'glpi_plugin_certificates_certificates',
+                  'joinparams' => $sopt[1710]['joinparams'])));
+         $sopt[1711]['datatype']      = 'dropdown';
          $sopt[1711]['massiveaction'] = false;
       }
    }
@@ -374,14 +370,14 @@ function plugin_certificates_getAddSearchOptions($itemtype)
  * @param $ID
  * @param $data
  * @param $num
+ *
  * @return string
  */
-function plugin_certificates_displayConfigItem($type, $ID, $data, $num)
-{
+function plugin_certificates_displayConfigItem($type, $ID, $data, $num) {
 
    $searchopt =& Search::getOptions($type);
-   $table = $searchopt[$ID]["table"];
-   $field = $searchopt[$ID]["field"];
+   $table     = $searchopt[$ID]["table"];
+   $field     = $searchopt[$ID]["field"];
 
    switch ($table . '.' . $field) {
       case "glpi_plugin_certificates_certificates.date_expiration" :
@@ -397,15 +393,15 @@ function plugin_certificates_displayConfigItem($type, $ID, $data, $num)
  * @param $ID
  * @param $data
  * @param $num
+ *
  * @return date|string|translated
  */
-function plugin_certificates_giveItem($type, $ID, $data, $num)
-{
+function plugin_certificates_giveItem($type, $ID, $data, $num) {
    global $DB;
 
    $searchopt =& Search::getOptions($type);
-   $table = $searchopt[$ID]["table"];
-   $field = $searchopt[$ID]["field"];
+   $table     = $searchopt[$ID]["table"];
+   $field     = $searchopt[$ID]["field"];
 
    switch ($table . '.' . $field) {
       case "glpi_plugin_certificates_certificates.date_expiration" :
@@ -417,18 +413,18 @@ function plugin_certificates_giveItem($type, $ID, $data, $num)
          break;
       case "glpi_plugin_certificates_certificates_items.items_id" :
          //$type : item type
-         $query_device = "SELECT DISTINCT `itemtype`
+         $query_device  = "SELECT DISTINCT `itemtype`
                      FROM `glpi_plugin_certificates_certificates_items`
                      WHERE `plugin_certificates_certificates_id` = '" . $data['id'] . "'
                      ORDER BY `itemtype` ";
          $result_device = $DB->query($query_device);
          $number_device = $DB->numrows($result_device);
 
-         $out = '';
+         $out         = '';
          $certificate = $data['id'];
          if ($number_device > 0) {
             for ($i = 0; $i < $number_device; $i++) {
-               $column = "name";
+               $column   = "name";
                $itemtype = $DB->result($result_device, $i, "itemtype");
 
                if (!class_exists($itemtype)) {
@@ -440,12 +436,12 @@ function plugin_certificates_giveItem($type, $ID, $data, $num)
                   $table_item = getTableForItemType($itemtype);
 
                   $query = "SELECT `" . $table_item . "`.*, `glpi_plugin_certificates_certificates_items`.`id` AS items_id, `glpi_entities`.`id` AS entity "
-                     . " FROM `glpi_plugin_certificates_certificates_items`, `" . $table_item
-                     . "` LEFT JOIN `glpi_entities` ON (`glpi_entities`.`id` = `" . $table_item . "`.`entities_id`) "
-                     . " WHERE `" . $table_item . "`.`id` = `glpi_plugin_certificates_certificates_items`.`items_id`
+                           . " FROM `glpi_plugin_certificates_certificates_items`, `" . $table_item
+                           . "` LEFT JOIN `glpi_entities` ON (`glpi_entities`.`id` = `" . $table_item . "`.`entities_id`) "
+                           . " WHERE `" . $table_item . "`.`id` = `glpi_plugin_certificates_certificates_items`.`items_id`
                      AND `glpi_plugin_certificates_certificates_items`.`itemtype` = '$itemtype'
                      AND `glpi_plugin_certificates_certificates_items`.`plugin_certificates_certificates_id` = '" . $certificate . "' "
-                     . getEntitiesRestrictRequest(" AND ", $table_item, '', '', $item->maybeRecursive());
+                           . getEntitiesRestrictRequest(" AND ", $table_item, '', '', $item->maybeRecursive());
 
                   if ($item->maybeTemplate()) {
                      $query .= " AND " . $table_item . ".is_template='0'";
@@ -477,14 +473,14 @@ function plugin_certificates_giveItem($type, $ID, $data, $num)
 
 /**
  * @param $type
+ *
  * @return array
  */
-function plugin_certificates_MassiveActions($type)
-{
+function plugin_certificates_MassiveActions($type) {
 
    if (in_array($type, PluginCertificatesCertificate::getTypes(true))) {
       return array('PluginCertificatesCertificate' . MassiveAction::CLASS_ACTION_SEPARATOR . 'plugin_certificates_add_item' =>
-         __('Associate to certificate', 'certificates'));
+                      __('Associate to certificate', 'certificates'));
    }
    return array();
 }

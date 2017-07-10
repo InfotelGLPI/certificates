@@ -121,8 +121,8 @@ CREATE TABLE `glpi_plugin_certificates_notificationstates` (
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 
-INSERT INTO `glpi_notificationtemplates` VALUES
-  (NULL, 'Alert Certificates', 'PluginCertificatesCertificate', '2010-02-24 21:34:46', '', NULL, '2010-02-24 21:34:46');
+INSERT INTO `glpi_notificationtemplates` (`name`, `itemtype`)
+ VALUES ('Alert Certificates', 'PluginCertificatesCertificate');
 
 INSERT INTO `glpi_displaypreferences` VALUES (NULL, 'PluginCertificatesCertificate', '3', '2', '0');
 INSERT INTO `glpi_displaypreferences` VALUES (NULL, 'PluginCertificatesCertificate', '4', '3', '0');
