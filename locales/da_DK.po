@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Certificates Development Team
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Jens Hyllegaard <jens.hyllegaard@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: GLPI Project - certificates plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-17 10:19+0200\n"
+"PO-Revision-Date: 2017-07-10 11:43+0200\n"
+"Last-Translator: Jens Hyllegaard <jens.hyllegaard@gmail.com>\n"
+"Language-Team: Danish (Denmark) (http://www.transifex.com/tsmr/GLPI_certificates/language/da_DK/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: da_DK\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#: hook.php:374 inc/certificate_item.class.php:507
+msgid "Does not expire"
+msgstr "Udløber ikke"
+
+#: hook.php:443
+msgid "Associate to certificate"
+msgstr "Tilknyt til certifikat"
+
+#: setup.php:81 inc/certificate.class.php:45 inc/menu.class.php:35
+#: inc/profile.class.php:145
+msgid "Certificate"
+msgid_plural "Certificates"
+msgstr[0] "Certifikat"
+msgstr[1] "Certifikater"
+
+#: setup.php:93
+msgid "This plugin requires GLPI >= 0.90"
+msgstr "Denne udvidelse kræver GLPI >= 0.90"
+
+#: inc/certificate.class.php:75 inc/certificate.class.php:290
+#: inc/certificate_item.class.php:453
+msgid "DNS name"
+msgstr "DNS navn"
+
+#: inc/certificate.class.php:79 inc/certificate.class.php:304
+#: inc/certificate_item.class.php:454
+msgid "DNS suffix"
+msgstr "DNS efternavn"
+
+#: inc/certificate.class.php:95 inc/certificate.class.php:281
+msgid "Root CA"
+msgstr "Rod CA"
+
+#: inc/certificate.class.php:100 inc/certificate.class.php:337
+msgid "Self-signed"
+msgstr "Selvsigneret"
+
+#: inc/certificate.class.php:105 inc/certificate.class.php:328
+msgid "Notification email"
+msgstr "Notifikations e-mail"
+
+#: inc/certificate.class.php:132 inc/certificate.class.php:351
+msgid "Command used"
+msgstr "Brugt kommando"
+
+#: inc/certificate.class.php:137 inc/certificate.class.php:357
+msgid "Certificate request (CSR)"
+msgstr "Certifikat forespørgsel (CSR)"
+
+#: inc/certificate.class.php:311
+msgid "Empty for infinite"
+msgstr "Blank for uendelig"
+
+#: inc/certificate.class.php:623 inc/certificate.class.php:704
+#: inc/notificationtargetcertificate.class.php:74
+msgid "Expired or expiring certificates"
+msgstr "Udløbede eller snart udløbne certifikater"
+
+#: inc/certificate_item.class.php:426
+msgctxt "button"
+msgid "Associate a certificate"
+msgstr "Tilnyt et certifikat"
+
+#: inc/certificatestate.class.php:41
+msgid "Certificate status"
+msgid_plural "Certificate statuses"
+msgstr[0] "Certifikat status"
+msgstr[1] "Certifikat status"
+
+#: inc/certificatetype.class.php:42
+msgid "Certificate type"
+msgid_plural "Certificate types"
+msgstr[0] "Certifikattype"
+msgstr[1] "Certifikattyper"
+
+#: inc/config.class.php:39
+msgid "Plugin Setup"
+msgstr "Udvidelses opsætning"
+
+#: inc/config.class.php:64
+msgid "Time of checking of validity of certificates"
+msgstr "Tid for tjek af certifikaters gyldighed"
+
+#: inc/config.class.php:73
+msgid "Certificates expired since more"
+msgstr "Certifikater der er udløbet inden for de sidste"
+
+#: inc/config.class.php:77
+msgid "Certificates expiring in less than"
+msgstr "Certifikater der udløber inden for"
+
+#: inc/notificationstate.class.php:104
+msgid "add not-used status in expiration mail"
+msgstr "tilføj ej-brugt status i udløbs e-mail"
+
+#: inc/notificationstate.class.php:131
+msgid "No used status in expiration mail"
+msgstr "Ej-brugt status i udløbs e-mail"
+
+#: inc/notificationtargetcertificate.class.php:38
+#: inc/notificationtargetcertificate.class.php:48
+msgid "Expired certificates"
+msgstr "Udløbede certifikater"
+
+#: inc/notificationtargetcertificate.class.php:39
+#: inc/notificationtargetcertificate.class.php:49
+msgid "Expiring certificates"
+msgstr "Certifikate der snart udløber"

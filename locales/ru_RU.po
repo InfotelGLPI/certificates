@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Certificates Development Team
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Александр Щербак <scherbak.alexander@gmail.com>, 2015
+# Nikolay <techobsl@yandex.ru>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: GLPI Project - certificates plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-17 10:19+0200\n"
+"PO-Revision-Date: 2017-07-10 11:43+0200\n"
+"Last-Translator: Nikolay <techobsl@yandex.ru>\n"
+"Language-Team: Russian (Russia) (http://www.transifex.com/tsmr/GLPI_certificates/language/ru_RU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#: hook.php:374 inc/certificate_item.class.php:507
+msgid "Does not expire"
+msgstr "Не истекает"
+
+#: hook.php:443
+msgid "Associate to certificate"
+msgstr "Привязать к сертификату"
+
+#: setup.php:81 inc/certificate.class.php:45 inc/menu.class.php:35
+#: inc/profile.class.php:145
+msgid "Certificate"
+msgid_plural "Certificates"
+msgstr[0] "Сертификат"
+msgstr[1] "Сертификаты"
+msgstr[2] "Сертификаты"
+msgstr[3] "Сертификаты"
+
+#: setup.php:93
+msgid "This plugin requires GLPI >= 0.90"
+msgstr "Плагину необходим GLPI >= 0.90"
+
+#: inc/certificate.class.php:75 inc/certificate.class.php:290
+#: inc/certificate_item.class.php:453
+msgid "DNS name"
+msgstr "DNS-имя"
+
+#: inc/certificate.class.php:79 inc/certificate.class.php:304
+#: inc/certificate_item.class.php:454
+msgid "DNS suffix"
+msgstr "DNS-суффикс"
+
+#: inc/certificate.class.php:95 inc/certificate.class.php:281
+msgid "Root CA"
+msgstr "Корневой ЦС"
+
+#: inc/certificate.class.php:100 inc/certificate.class.php:337
+msgid "Self-signed"
+msgstr "Самоподписанный"
+
+#: inc/certificate.class.php:105 inc/certificate.class.php:328
+msgid "Notification email"
+msgstr "Уведомлять по email"
+
+#: inc/certificate.class.php:132 inc/certificate.class.php:351
+msgid "Command used"
+msgstr "Используемая команда"
+
+#: inc/certificate.class.php:137 inc/certificate.class.php:357
+msgid "Certificate request (CSR)"
+msgstr "Запрос на получение сертификата (CSR)"
+
+#: inc/certificate.class.php:311
+msgid "Empty for infinite"
+msgstr "Окончание действия"
+
+#: inc/certificate.class.php:623 inc/certificate.class.php:704
+#: inc/notificationtargetcertificate.class.php:74
+msgid "Expired or expiring certificates"
+msgstr "Просроченные или истекающие сертификаты"
+
+#: inc/certificate_item.class.php:426
+msgctxt "button"
+msgid "Associate a certificate"
+msgstr "Привязанный сертификат"
+
+#: inc/certificatestate.class.php:41
+msgid "Certificate status"
+msgid_plural "Certificate statuses"
+msgstr[0] "Статус сертификата"
+msgstr[1] "Статус сертификата"
+msgstr[2] "Статусы сертификатов"
+msgstr[3] "Статусы сертификатов"
+
+#: inc/certificatetype.class.php:42
+msgid "Certificate type"
+msgid_plural "Certificate types"
+msgstr[0] "Тип сертификата"
+msgstr[1] "Тип сертификата"
+msgstr[2] "Типы сертификатов"
+msgstr[3] "Типы сертификатов"
+
+#: inc/config.class.php:39
+msgid "Plugin Setup"
+msgstr "Настройки плагина"
+
+#: inc/config.class.php:64
+msgid "Time of checking of validity of certificates"
+msgstr "Время проверки действительности сертификатов"
+
+#: inc/config.class.php:73
+msgid "Certificates expired since more"
+msgstr "Сертификаты, истёкшие более"
+
+#: inc/config.class.php:77
+msgid "Certificates expiring in less than"
+msgstr "Сертификаты, истекающие через"
+
+#: inc/notificationstate.class.php:104
+msgid "add not-used status in expiration mail"
+msgstr "при отправке сообщений об окончании срока действия не учитывать статус"
+
+#: inc/notificationstate.class.php:131
+msgid "No used status in expiration mail"
+msgstr "Неиспользуемые статусы при отправке сообщений об окончании срока действия"
+
+#: inc/notificationtargetcertificate.class.php:38
+#: inc/notificationtargetcertificate.class.php:48
+msgid "Expired certificates"
+msgstr "Истёкшие сертификаты"
+
+#: inc/notificationtargetcertificate.class.php:39
+#: inc/notificationtargetcertificate.class.php:49
+msgid "Expiring certificates"
+msgstr "Истекающие сертификаты"
