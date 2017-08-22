@@ -85,7 +85,7 @@ function plugin_version_certificates()
 
    return array(
       'name' => _n('Certificate', 'Certificates', 2, 'certificates'),
-      'version' => '2.2.0',
+      'version' => '2.2.2',
       'license' => 'GPLv2+',
       'author' => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
       'homepage' => 'https://github.com/InfotelGLPI/certificates',
