@@ -1,15 +1,15 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Certificates Development Team
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
-# Kaya Zeren <kayazeren@gmail.com>, 2013,2015
+# Kaya Zeren <kayazeren@gmail.com>, 2013,2015,2017
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - certificates plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-17 10:19+0200\n"
-"PO-Revision-Date: 2015-07-31 07:35+0000\n"
+"PO-Revision-Date: 2017-08-22 09:06+0200\n"
 "Last-Translator: Kaya Zeren <kayazeren@gmail.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/tsmr/GLPI_certificates/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: hook.php:374 inc/certificate_item.class.php:507
 msgid "Does not expire"
@@ -88,7 +89,7 @@ msgstr[0] "Sertifika durumu"
 #: inc/certificatetype.class.php:42
 msgid "Certificate type"
 msgid_plural "Certificate types"
-msgstr[0] "Sertifika tipi"
+msgstr[0] "Sertifika türü"
 
 #: inc/config.class.php:39
 msgid "Plugin Setup"

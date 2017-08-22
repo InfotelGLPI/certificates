@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Certificates plugin 1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-26 09:26+0200\n"
+"POT-Creation-Date: 2017-08-22 09:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,111 +18,111 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: hook.php:374 inc/certificate_item.class.php:507
+#: hook.php:409 inc/certificate_item.class.php:568
 msgid "Does not expire"
 msgstr ""
 
-#: hook.php:443
+#: hook.php:483
 msgid "Associate to certificate"
 msgstr ""
 
-#: setup.php:81 inc/certificate.class.php:46 inc/menu.class.php:34
-#: inc/profile.class.php:145
+#: setup.php:87 inc/certificate.class.php:55 inc/menu.class.php:42
+#: inc/profile.class.php:179
 msgid "Certificate"
 msgid_plural "Certificates"
 msgstr[0] ""
 msgstr[1] ""
 
-#: setup.php:93
+#: setup.php:103
 msgid "This plugin requires GLPI >= 9.1"
 msgstr ""
 
-#: inc/certificate.class.php:76 inc/certificate.class.php:291
-#: inc/certificate_item.class.php:453
+#: inc/certificate.class.php:93 inc/certificate.class.php:340
+#: inc/certificate_item.class.php:515
 msgid "DNS name"
 msgstr ""
 
-#: inc/certificate.class.php:80 inc/certificate.class.php:305
-#: inc/certificate_item.class.php:454
+#: inc/certificate.class.php:97 inc/certificate.class.php:354
+#: inc/certificate_item.class.php:516
 msgid "DNS suffix"
 msgstr ""
 
-#: inc/certificate.class.php:96 inc/certificate.class.php:282
+#: inc/certificate.class.php:113 inc/certificate.class.php:331
 msgid "Root CA"
 msgstr ""
 
-#: inc/certificate.class.php:101 inc/certificate.class.php:338
+#: inc/certificate.class.php:118 inc/certificate.class.php:387
 msgid "Self-signed"
 msgstr ""
 
-#: inc/certificate.class.php:106 inc/certificate.class.php:329
+#: inc/certificate.class.php:123 inc/certificate.class.php:378
 msgid "Notification email"
 msgstr ""
 
-#: inc/certificate.class.php:133 inc/certificate.class.php:352
+#: inc/certificate.class.php:150 inc/certificate.class.php:401
 msgid "Command used"
 msgstr ""
 
-#: inc/certificate.class.php:138 inc/certificate.class.php:358
+#: inc/certificate.class.php:155 inc/certificate.class.php:407
 msgid "Certificate request (CSR)"
 msgstr ""
 
-#: inc/certificate.class.php:312
+#: inc/certificate.class.php:361
 msgid "Empty for infinite"
 msgstr ""
 
-#: inc/certificate.class.php:623 inc/certificate.class.php:704
-#: inc/notificationtargetcertificate.class.php:74
+#: inc/certificate.class.php:694 inc/certificate.class.php:784
+#: inc/notificationtargetcertificate.class.php:91
 msgid "Expired or expiring certificates"
 msgstr ""
 
-#: inc/certificate_item.class.php:426
+#: inc/certificate_item.class.php:488
 msgctxt "button"
 msgid "Associate a certificate"
 msgstr ""
 
-#: inc/certificatestate.class.php:41
+#: inc/certificatestate.class.php:50
 msgid "Certificate status"
 msgid_plural "Certificate statuses"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/certificatetype.class.php:42
+#: inc/certificatetype.class.php:51
 msgid "Certificate type"
 msgid_plural "Certificate types"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/config.class.php:39
+#: inc/config.class.php:49
 msgid "Plugin Setup"
 msgstr ""
 
-#: inc/config.class.php:64
+#: inc/config.class.php:86
 msgid "Time of checking of validity of certificates"
 msgstr ""
 
-#: inc/config.class.php:73
+#: inc/config.class.php:95
 msgid "Certificates expired since more"
 msgstr ""
 
-#: inc/config.class.php:77
+#: inc/config.class.php:99
 msgid "Certificates expiring in less than"
 msgstr ""
 
-#: inc/notificationstate.class.php:104
+#: inc/notificationstate.class.php:125
 msgid "add not-used status in expiration mail"
 msgstr ""
 
-#: inc/notificationstate.class.php:131
+#: inc/notificationstate.class.php:156
 msgid "No used status in expiration mail"
 msgstr ""
 
-#: inc/notificationtargetcertificate.class.php:38
-#: inc/notificationtargetcertificate.class.php:48
+#: inc/notificationtargetcertificate.class.php:46
+#: inc/notificationtargetcertificate.class.php:61
 msgid "Expired certificates"
 msgstr ""
 
-#: inc/notificationtargetcertificate.class.php:39
-#: inc/notificationtargetcertificate.class.php:49
+#: inc/notificationtargetcertificate.class.php:47
+#: inc/notificationtargetcertificate.class.php:62
 msgid "Expiring certificates"
 msgstr ""

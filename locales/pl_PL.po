@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Certificates Development Team
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Adam Humienny <adam.humienny@gmail.com>, 2016
 msgid ""
@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: GLPI Project - certificates plugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-17 10:19+0200\n"
-"PO-Revision-Date: 2016-03-14 21:37+0000\n"
+"PO-Revision-Date: 2017-08-22 09:07+0200\n"
 "Last-Translator: Adam Humienny <adam.humienny@gmail.com>\n"
 "Language-Team: Polish (Poland) (http://www.transifex.com/tsmr/GLPI_certificates/language/pl_PL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl_PL\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: hook.php:374 inc/certificate_item.class.php:507
 msgid "Does not expire"
@@ -33,6 +34,7 @@ msgid_plural "Certificates"
 msgstr[0] "Certyfikat"
 msgstr[1] "Certyfikaty"
 msgstr[2] "Certyfikatów"
+msgstr[3] "Certyfikatów"
 
 #: setup.php:93
 msgid "This plugin requires GLPI >= 0.90"
@@ -88,6 +90,7 @@ msgid_plural "Certificate statuses"
 msgstr[0] "Status certyfikatu"
 msgstr[1] "Statusy certyfikatów"
 msgstr[2] "Statusy certyfikatów"
+msgstr[3] "Statusy certyfikatów"
 
 #: inc/certificatetype.class.php:42
 msgid "Certificate type"
@@ -95,6 +98,7 @@ msgid_plural "Certificate types"
 msgstr[0] "Typ certyfikatu"
 msgstr[1] "Typy certyfikatów"
 msgstr[2] "Typów certyfikatów"
+msgstr[3] "Typów certyfikatów"
 
 #: inc/config.class.php:39
 msgid "Plugin Setup"
