@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Certificates Development Team
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the GLPI - Certificates plugin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Certificates plugin 1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-22 09:02+0200\n"
+"POT-Creation-Date: 2017-11-28 16:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#: certificate.php:32 setup.php:87 front/certificate.php:32
+#: inc/certificate.class.php:55 inc/menu.class.php:42 inc/profile.class.php:179
+msgid "Certificate"
+msgid_plural "Certificates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: certificate.php:38 certificate.php:41 front/certificate.php:38
+#: front/certificate.php:41
+msgid "Core migration"
+msgstr ""
+
+#: certificate.php:43 front/certificate.php:43
+msgid "Are you sure you want to do core migration ??"
+msgstr ""
+
+#: certificate.php:44 certificate.php:48 front/certificate.php:44
+#: front/certificate.php:48
+msgid "Warning existants Certificates will be migrated !!"
+msgstr ""
+
+#: certificate.php:53 front/certificate.php:53
+msgid "Data migration"
+msgstr ""
+
+#: certificate.php:168 front/certificate.php:186
+msgid "Tables purge"
+msgstr ""
+
+#: certificate.php:194 front/certificate.php:212
+msgid "Link with core purge"
+msgstr ""
+
+#: certificate.php:211 front/certificate.php:229
+msgid "Notifications purge"
+msgstr ""
+
 #: hook.php:409 inc/certificate_item.class.php:568
 msgid "Does not expire"
 msgstr ""
@@ -26,15 +63,12 @@ msgstr ""
 msgid "Associate to certificate"
 msgstr ""
 
-#: setup.php:87 inc/certificate.class.php:55 inc/menu.class.php:42
-#: inc/profile.class.php:179
-msgid "Certificate"
-msgid_plural "Certificates"
-msgstr[0] ""
-msgstr[1] ""
-
 #: setup.php:103
-msgid "This plugin requires GLPI >= 9.1"
+msgid "This plugin requires GLPI >= 9.2"
+msgstr ""
+
+#: front/certificate.php:256
+msgid "No data to migrate"
 msgstr ""
 
 #: inc/certificate.class.php:93 inc/certificate.class.php:340

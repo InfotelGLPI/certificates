@@ -1,34 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Certificates Development Team
-# This file is distributed under the same license as the PACKAGE package.
-#
+# This file is distributed under the same license as the GLPI - Certificates plugin package.
+# 
 # Translators:
 # Adam Humienny <adam.humienny@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - certificates plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-17 10:19+0200\n"
-"PO-Revision-Date: 2017-08-22 09:07+0200\n"
-"Last-Translator: Adam Humienny <adam.humienny@gmail.com>\n"
+"POT-Creation-Date: 2017-11-28 16:20+0100\n"
+"PO-Revision-Date: 2017-11-28 15:34+0000\n"
+"Last-Translator: Amandine Manceau\n"
 "Language-Team: Polish (Poland) (http://www.transifex.com/tsmr/GLPI_certificates/language/pl_PL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl_PL\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Poedit 2.0.3\n"
 
-#: hook.php:374 inc/certificate_item.class.php:507
-msgid "Does not expire"
-msgstr "Nie wygasa"
-
-#: hook.php:443
-msgid "Associate to certificate"
-msgstr ""
-
-#: setup.php:81 inc/certificate.class.php:45 inc/menu.class.php:35
-#: inc/profile.class.php:145
+#: certificate.php:32 setup.php:87 front/certificate.php:32
+#: inc/certificate.class.php:55 inc/menu.class.php:42
+#: inc/profile.class.php:179
 msgid "Certificate"
 msgid_plural "Certificates"
 msgstr[0] "Certyfikat"
@@ -36,55 +28,97 @@ msgstr[1] "Certyfikaty"
 msgstr[2] "Certyfikatów"
 msgstr[3] "Certyfikatów"
 
-#: setup.php:93
-msgid "This plugin requires GLPI >= 0.90"
+#: certificate.php:38 certificate.php:41 front/certificate.php:38
+#: front/certificate.php:41
+msgid "Core migration"
 msgstr ""
 
-#: inc/certificate.class.php:75 inc/certificate.class.php:290
-#: inc/certificate_item.class.php:453
+#: certificate.php:43 front/certificate.php:43
+msgid "Are you sure you want to do core migration ??"
+msgstr ""
+
+#: certificate.php:44 certificate.php:48 front/certificate.php:44
+#: front/certificate.php:48
+msgid "Warning existants Certificates will be migrated !!"
+msgstr ""
+
+#: certificate.php:53 front/certificate.php:53
+msgid "Data migration"
+msgstr ""
+
+#: certificate.php:168 front/certificate.php:186
+msgid "Tables purge"
+msgstr ""
+
+#: certificate.php:194 front/certificate.php:212
+msgid "Link with core purge"
+msgstr ""
+
+#: certificate.php:211 front/certificate.php:229
+msgid "Notifications purge"
+msgstr ""
+
+#: hook.php:409 inc/certificate_item.class.php:568
+msgid "Does not expire"
+msgstr "Nie wygasa"
+
+#: hook.php:483
+msgid "Associate to certificate"
+msgstr ""
+
+#: setup.php:103
+msgid "This plugin requires GLPI >= 9.2"
+msgstr ""
+
+#: front/certificate.php:256
+msgid "No data to migrate"
+msgstr ""
+
+#: inc/certificate.class.php:93 inc/certificate.class.php:340
+#: inc/certificate_item.class.php:515
 msgid "DNS name"
 msgstr "Nazwa DNS"
 
-#: inc/certificate.class.php:79 inc/certificate.class.php:304
-#: inc/certificate_item.class.php:454
+#: inc/certificate.class.php:97 inc/certificate.class.php:354
+#: inc/certificate_item.class.php:516
 msgid "DNS suffix"
 msgstr "Sufiks DNS"
 
-#: inc/certificate.class.php:95 inc/certificate.class.php:281
+#: inc/certificate.class.php:113 inc/certificate.class.php:331
 msgid "Root CA"
 msgstr "Główne centrum certyfikacji"
 
-#: inc/certificate.class.php:100 inc/certificate.class.php:337
+#: inc/certificate.class.php:118 inc/certificate.class.php:387
 msgid "Self-signed"
 msgstr "Podpis własny"
 
-#: inc/certificate.class.php:105 inc/certificate.class.php:328
+#: inc/certificate.class.php:123 inc/certificate.class.php:378
 msgid "Notification email"
 msgstr "Powiadomienia email"
 
-#: inc/certificate.class.php:132 inc/certificate.class.php:351
+#: inc/certificate.class.php:150 inc/certificate.class.php:401
 msgid "Command used"
 msgstr "Użyta komenda"
 
-#: inc/certificate.class.php:137 inc/certificate.class.php:357
+#: inc/certificate.class.php:155 inc/certificate.class.php:407
 msgid "Certificate request (CSR)"
 msgstr ""
 
-#: inc/certificate.class.php:311
+#: inc/certificate.class.php:361
 msgid "Empty for infinite"
 msgstr ""
 
-#: inc/certificate.class.php:623 inc/certificate.class.php:704
-#: inc/notificationtargetcertificate.class.php:74
+#: inc/certificate.class.php:694 inc/certificate.class.php:784
+#: inc/notificationtargetcertificate.class.php:91
 msgid "Expired or expiring certificates"
 msgstr "Certyfikaty wygaśnięte lub wygasające "
 
-#: inc/certificate_item.class.php:426
+#: inc/certificate_item.class.php:488
 msgctxt "button"
 msgid "Associate a certificate"
 msgstr ""
 
-#: inc/certificatestate.class.php:41
+#: inc/certificatestate.class.php:50
 msgid "Certificate status"
 msgid_plural "Certificate statuses"
 msgstr[0] "Status certyfikatu"
@@ -92,7 +126,7 @@ msgstr[1] "Statusy certyfikatów"
 msgstr[2] "Statusy certyfikatów"
 msgstr[3] "Statusy certyfikatów"
 
-#: inc/certificatetype.class.php:42
+#: inc/certificatetype.class.php:51
 msgid "Certificate type"
 msgid_plural "Certificate types"
 msgstr[0] "Typ certyfikatu"
@@ -100,36 +134,36 @@ msgstr[1] "Typy certyfikatów"
 msgstr[2] "Typów certyfikatów"
 msgstr[3] "Typów certyfikatów"
 
-#: inc/config.class.php:39
+#: inc/config.class.php:49
 msgid "Plugin Setup"
 msgstr "Konfiguracja wtyczki"
 
-#: inc/config.class.php:64
+#: inc/config.class.php:86
 msgid "Time of checking of validity of certificates"
 msgstr ""
 
-#: inc/config.class.php:73
+#: inc/config.class.php:95
 msgid "Certificates expired since more"
 msgstr ""
 
-#: inc/config.class.php:77
+#: inc/config.class.php:99
 msgid "Certificates expiring in less than"
 msgstr "Certyfikat wygaśnie za mniej niż"
 
-#: inc/notificationstate.class.php:104
+#: inc/notificationstate.class.php:125
 msgid "add not-used status in expiration mail"
 msgstr ""
 
-#: inc/notificationstate.class.php:131
+#: inc/notificationstate.class.php:156
 msgid "No used status in expiration mail"
 msgstr ""
 
-#: inc/notificationtargetcertificate.class.php:38
-#: inc/notificationtargetcertificate.class.php:48
+#: inc/notificationtargetcertificate.class.php:46
+#: inc/notificationtargetcertificate.class.php:61
 msgid "Expired certificates"
 msgstr "Certyfikaty wygasłe"
 
-#: inc/notificationtargetcertificate.class.php:39
-#: inc/notificationtargetcertificate.class.php:49
+#: inc/notificationtargetcertificate.class.php:47
+#: inc/notificationtargetcertificate.class.php:62
 msgid "Expiring certificates"
 msgstr "Certyfikaty wygasające"

@@ -85,11 +85,11 @@ function plugin_version_certificates()
 
    return array(
       'name' => _n('Certificate', 'Certificates', 2, 'certificates'),
-      'version' => '2.2.2',
+      'version' => '2.3.0',
       'license' => 'GPLv2+',
       'author' => "<a href='http://infotel.com/services/expertise-technique/glpi/'>Infotel</a>",
       'homepage' => 'https://github.com/InfotelGLPI/certificates',
-      'minGlpiVersion' => '9.1',
+      'minGlpiVersion' => '9.2',
    );
 }
 
@@ -99,8 +99,8 @@ function plugin_version_certificates()
  */
 function plugin_certificates_check_prerequisites()
 {
-   if (version_compare(GLPI_VERSION, '9.1', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
-      echo __('This plugin requires GLPI >= 9.1', 'certificates');
+   if (version_compare(GLPI_VERSION, '9.2', 'lt') || version_compare(GLPI_VERSION, '9.3', 'ge')) {
+      echo __('This plugin requires GLPI >= 9.2', 'certificates');
       return false;
    }
    return true;
