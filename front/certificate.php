@@ -256,5 +256,6 @@ if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migr
    echo __('No data to migrate', 'certificates');
 
 }
+echo __('You can uninstall the plugin', 'certificates');
 echo "</div>";
 Html::footer();

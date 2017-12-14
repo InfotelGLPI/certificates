@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Certificates plugin 1.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-28 16:20+0100\n"
+"POT-Creation-Date: 2017-12-01 10:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,16 +26,16 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: certificate.php:38 certificate.php:41 front/certificate.php:38
-#: front/certificate.php:41
+#: front/certificate.php:43
 msgid "Core migration"
 msgstr ""
 
-#: certificate.php:43 front/certificate.php:43
+#: certificate.php:43 front/certificate.php:45
 msgid "Are you sure you want to do core migration ??"
 msgstr ""
 
-#: certificate.php:44 certificate.php:48 front/certificate.php:44
-#: front/certificate.php:48
+#: certificate.php:44 certificate.php:48 front/certificate.php:46
+#: front/certificate.php:50
 msgid "Warning existants Certificates will be migrated !!"
 msgstr ""
 
@@ -69,6 +69,10 @@ msgstr ""
 
 #: front/certificate.php:256
 msgid "No data to migrate"
+msgstr ""
+
+#: front/certificate.php:259
+msgid "You can uninstall the plugin"
 msgstr ""
 
 #: inc/certificate.class.php:93 inc/certificate.class.php:340

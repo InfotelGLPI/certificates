@@ -38,12 +38,12 @@ function plugin_certificates_install() {
    $install  = false;
    $update78 = false;
 
-   if (!TableExists("glpi_plugin_certificates") && !TableExists("glpi_plugin_certificates_certificatetypes")) {
+   if (!$DB->tableExists("glpi_plugin_certificates") && !$DB->tableExists("glpi_plugin_certificates_certificatetypes")) {
 
       $install = true;
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/empty-2.2.0.sql");
 
-   } else if (TableExists("glpi_plugin_certificates_mailing") && !FieldExists("glpi_plugin_certificates", "recursive")) {
+   } else if ($DB->tableExists("glpi_plugin_certificates_mailing") && $DB->fieldExists("glpi_plugin_certificates", "recursive")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.4.sql");
@@ -51,33 +51,33 @@ function plugin_certificates_install() {
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.5.1.sql");
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.6.0.sql");
 
-   } else if (TableExists("glpi_plugin_certificates_profiles") && FieldExists("glpi_plugin_certificates_profiles", "interface")) {
+   } else if ($DB->tableExists("glpi_plugin_certificates_profiles") && $DB->fieldExists("glpi_plugin_certificates_profiles", "interface")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.5.0.sql");
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.5.1.sql");
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.6.0.sql");
 
-   } else if (TableExists("glpi_plugin_certificates") && !FieldExists("glpi_plugin_certificates", "date_mod")) {
+   } else if ($DB->tableExists("glpi_plugin_certificates") && !$DB->fieldExists("glpi_plugin_certificates", "date_mod")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.5.1.sql");
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.6.0.sql");
 
-   } else if (!TableExists("glpi_plugin_certificates_certificatetypes")) {
+   } else if (!$DB->tableExists("glpi_plugin_certificates_certificatetypes")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.6.0.sql");
 
    }
    //from 1.6 version
-   if (TableExists("glpi_plugin_certificates_certificates")
-       && !FieldExists("glpi_plugin_certificates_certificates", "users_id_tech")
+   if ($DB->tableExists("glpi_plugin_certificates_certificates")
+       && !$DB->fieldExists("glpi_plugin_certificates_certificates", "users_id_tech")
    ) {
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.8.0.sql");
    }
 
-   if (TableExists("glpi_plugin_certificates_profiles")) {
+   if ($DB->tableExists("glpi_plugin_certificates_profiles")) {
 
       $notepad_tables = array('glpi_plugin_certificates_certificates');
 
