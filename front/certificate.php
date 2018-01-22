@@ -37,7 +37,7 @@ if (!isset($_POST['do_migration'])) {
 
 echo "<div align='center'><h1>".__('Core migration', 'certificates')."</h1><br/>";
 
-if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migration'] == 1) {
+if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migration'] == 0) {
    echo "<table align='center'><tr><td>";
 
    Html::showSimpleForm($_SERVER['PHP_SELF'], 'migration', __('Core migration', 'certificates'),
