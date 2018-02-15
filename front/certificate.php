@@ -35,17 +35,16 @@ if (!isset($_POST['do_migration'])) {
    $_POST['do_migration'] = "0";
 }
 
-echo "<div align='center'><h1>".__('Core migration', 'certificates')."</h1><br/>";
+echo "<div align='center'><h1>" . __('Core migration', 'certificates') . "</h1><br/>";
+echo "<table align='center'><tr><td>";
 
-if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migration'] == 0) {
-   echo "<table align='center'><tr><td>";
+Html::showSimpleForm($_SERVER['PHP_SELF'], 'migration', __('Core migration', 'certificates'),
+                     array('do_migration' => '1'), '', '',
+                     array(__('Are you sure you want to do core migration ??', 'certificates'),
+                           __('Warning existants Certificates will be migrated !!', 'certificates')));
 
-   Html::showSimpleForm($_SERVER['PHP_SELF'], 'migration', __('Core migration', 'certificates'),
-                        array('do_migration' => '1'),'','',
-                        array(__('Are you sure you want to do core migration ??', 'certificates'),
-                              __('Warning existants Certificates will be migrated !!', 'certificates')));
-
-   echo "</td></tr></table>";
+echo "</td></tr></table>";
+if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migration'] == 1) {
 
    echo "<br><span class='red b'>".__('Warning existants Certificates will be migrated !!', 'certificates')."</span>";
 
@@ -116,7 +115,7 @@ if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migr
          }
 
          $DB->query("UPDATE `glpi_plugin_certificates_certificates` 
-                     SET `states_id` = $last_id
+                     SET `plugin_certificates_certificatestates_id` = $last_id
                      WHERE `plugin_certificates_certificatestates_id` = $id_states");
 
       }
@@ -251,11 +250,11 @@ if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migr
    }
    
    CronTask::Unregister('CertificatesAlert');
-} else {
+} else if (!$DB->tableExists("glpi_plugin_certificates_certificates")) {
    echo "<br>";
    echo __('No data to migrate', 'certificates');
+   echo __('You can uninstall the plugin', 'certificates');
 
 }
-echo __('You can uninstall the plugin', 'certificates');
 echo "</div>";
 Html::footer();
