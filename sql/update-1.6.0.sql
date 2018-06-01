@@ -114,5 +114,5 @@ COLLATE utf8_unicode_ci NOT NULL DEFAULT '30',
   ADD `delay_whichexpire` VARCHAR(50)
 COLLATE utf8_unicode_ci NOT NULL DEFAULT '30';
 
-INSERT INTO `glpi_notificationtemplates`
-VALUES (NULL, 'Alert Certificates', 'PluginCertificatesCertificate', '2010-02-24 21:34:46', '', NULL);
+INSERT INTO `glpi_notificationtemplates` (`name`, `itemtype`, `date_mod`)
+VALUES ('Alert Certificates', 'PluginCertificatesCertificate', '2010-02-24 21:34:46');

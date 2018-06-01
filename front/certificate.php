@@ -253,6 +253,7 @@ if ($DB->tableExists("glpi_plugin_certificates_certificates") && $_POST['do_migr
 } else if (!$DB->tableExists("glpi_plugin_certificates_certificates")) {
    echo "<br>";
    echo __('No data to migrate', 'certificates');
+   echo "<br>";
    echo __('You can uninstall the plugin', 'certificates');
 
 }

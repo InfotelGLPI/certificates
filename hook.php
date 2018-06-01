@@ -43,7 +43,7 @@ function plugin_certificates_install() {
       $install = true;
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/empty-2.2.0.sql");
 
-   } else if ($DB->tableExists("glpi_plugin_certificates_mailing") && $DB->fieldExists("glpi_plugin_certificates", "recursive")) {
+   } else if ($DB->tableExists("glpi_plugin_certificates_mailing") && !$DB->fieldExists("glpi_plugin_certificates", "recursive")) {
 
       $update78 = true;
       $DB->runFile(GLPI_ROOT . "/plugins/certificates/sql/update-1.4.sql");
@@ -83,7 +83,7 @@ function plugin_certificates_install() {
 
       foreach ($notepad_tables as $t) {
          // Migrate data
-         if (FieldExists($t, 'notepad')) {
+         if ($DB->fieldExists($t, 'notepad')) {
             $query = "SELECT id, notepad
                       FROM `$t`
                       WHERE notepad IS NOT NULL
@@ -104,37 +104,37 @@ function plugin_certificates_install() {
    if ($install || $update78) {
 
       //Do One time on 0.78
-      $query_id = "SELECT `id` FROM `glpi_notificationtemplates` 
-                  WHERE `itemtype`='PluginCertificatesCertificate' AND `name` = 'Alert Certificates'";
-      $result = $DB->query($query_id) or die ($DB->error());
-      $itemtype = $DB->result($result, 0, 'id');
-
-      $query = "INSERT INTO `glpi_notificationtemplatetranslations` (`notificationtemplates_id`, `language`, `subject`,
-                                                                      `content_text`, `content_html`)
-                                 VALUES(" . $itemtype . ", '','##certificate.action## : ##certificate.entity##',
-                        '##lang.certificate.entity## :##certificate.entity##
-   ##FOREACHcertificates##
-   ##lang.certificate.name## : ##certificate.name## - ##lang.certificate.dateexpiration## : ##certificate.dateexpiration##
-   ##ENDFOREACHcertificates##',
-                        '&lt;p&gt;##lang.certificate.entity## :##certificate.entity##&lt;br /&gt; &lt;br /&gt;
-                        ##FOREACHcertificates##&lt;br /&gt;
-                        ##lang.certificate.name##  : ##certificate.name## - ##lang.certificate.dateexpiration## :  ##certificate.dateexpiration##&lt;br /&gt; 
-                        ##ENDFOREACHcertificates##&lt;/p&gt;');";
-      $DB->query($query);
-
-      $query = "INSERT INTO `glpi_notifications` (`name`, `entities_id`, `itemtype`, `event`, `mode`, 
-                                                  `notificationtemplates_id`, `is_recursive`, `is_active`, `date_creation`)
-                VALUES ('Alert Expired Certificates', 0, 'PluginCertificatesCertificate', 'ExpiredCertificates',
-                                          'mail'," . $itemtype . ", 1, 1, NOW());";
-
-      $DB->query($query);
-
-      $query = "INSERT INTO `glpi_notifications` (`name`, `entities_id`, `itemtype`, `event`, `mode`, 
-                                                  `notificationtemplates_id`, `is_recursive`, `is_active`, `date_creation`)
-                VALUES ('Alert Certificates Which Expire', 0, 'PluginCertificatesCertificate', 'CertificatesWhichExpire',
-                                          'mail'," . $itemtype . ", 1, 1, NOW());";
-
-      $DB->query($query);
+//      $query_id = "SELECT `id` FROM `glpi_notificationtemplates`
+//                  WHERE `itemtype`='PluginCertificatesCertificate' AND `name` = 'Alert Certificates'";
+//      $result = $DB->query($query_id) or die ($DB->error());
+//      $itemtype = $DB->result($result, 0, 'id');
+//
+//      $query = "INSERT INTO `glpi_notificationtemplatetranslations` (`notificationtemplates_id`, `language`, `subject`,
+//                                                                      `content_text`, `content_html`)
+//                                 VALUES(" . $itemtype . ", '','##certificate.action## : ##certificate.entity##',
+//                        '##lang.certificate.entity## :##certificate.entity##
+//   ##FOREACHcertificates##
+//   ##lang.certificate.name## : ##certificate.name## - ##lang.certificate.dateexpiration## : ##certificate.dateexpiration##
+//   ##ENDFOREACHcertificates##',
+//                        '&lt;p&gt;##lang.certificate.entity## :##certificate.entity##&lt;br /&gt; &lt;br /&gt;
+//                        ##FOREACHcertificates##&lt;br /&gt;
+//                        ##lang.certificate.name##  : ##certificate.name## - ##lang.certificate.dateexpiration## :  ##certificate.dateexpiration##&lt;br /&gt;
+//                        ##ENDFOREACHcertificates##&lt;/p&gt;');";
+//      $DB->query($query);
+//
+//      $query = "INSERT INTO `glpi_notifications` (`name`, `entities_id`, `itemtype`, `event`, `mode`,
+//                                                  `notificationtemplates_id`, `is_recursive`, `is_active`, `date_creation`)
+//                VALUES ('Alert Expired Certificates', 0, 'PluginCertificatesCertificate', 'ExpiredCertificates',
+//                                          'mail'," . $itemtype . ", 1, 1, NOW());";
+//
+//      $DB->query($query);
+//
+//      $query = "INSERT INTO `glpi_notifications` (`name`, `entities_id`, `itemtype`, `event`, `mode`,
+//                                                  `notificationtemplates_id`, `is_recursive`, `is_active`, `date_creation`)
+//                VALUES ('Alert Certificates Which Expire', 0, 'PluginCertificatesCertificate', 'CertificatesWhichExpire',
+//                                          'mail'," . $itemtype . ", 1, 1, NOW());";
+//
+//      $DB->query($query);
    }
 
    if ($update78) {
@@ -158,8 +158,8 @@ function plugin_certificates_install() {
 
       Plugin::migrateItemType(
          array(1700 => 'PluginCertificatesCertificate'),
-         array("glpi_bookmarks",
-               "glpi_bookmarks_users",
+         array("glpi_savedsearches",
+               "glpi_savedsearches_users",
                "glpi_displaypreferences",
                "glpi_documents_items",
                "glpi_infocoms",
