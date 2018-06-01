@@ -1,6 +1,9 @@
 # certificates
 Plugin certificates pour GLPI
 
+Attention, ce plugin est migré dans le coeur de GLPI à partir de la version 9.2.
+
+
 Ce plugin est sur Transifex - Aidez-nous à le traduire :
 https://www.transifex.com/tsmr/GLPI_certificates/
 
